@@ -1,6 +1,10 @@
+/* Autor: Kevin López // Fecha: 21-dic-2025 // Proyecto Final*/
+
+/* Función para cargar al inicio  */
 document.addEventListener("DOMContentLoaded", () => {
   const addButtons = document.querySelectorAll(".btn-add");
 
+  /* Función para añadir productos al carrito */
   addButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;

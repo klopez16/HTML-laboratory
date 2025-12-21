@@ -1,8 +1,12 @@
+/* Autor: Kevin López // Fecha: 21-dic-2025 // Proyecto Final*/
+
+/* Función para cargar al inicio  */
 document.addEventListener("DOMContentLoaded", () => {
   const resumenDiv = document.getElementById("resumen");
   const formPago = document.getElementById("form-pago");
   const mensajeExito = document.getElementById("mensaje-exito");
 
+  /*Función para renderizar el resumen del pedido*/
   function renderResumen() {
     const cart = getCart();
     const envio = getShipping();
@@ -43,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderResumen();
 
+  /* Función para mostrar la notificación flotante en los casos requeridos  */
   formPago.addEventListener("submit", (e) => {
     e.preventDefault();
 

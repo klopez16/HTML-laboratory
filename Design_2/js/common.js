@@ -1,4 +1,6 @@
-// --- Carrito en localStorage ---
+/* Autor: Kevin López // Fecha: 21-dic-2025 // Proyecto Final*/
+
+/* Función de carrito, simulado en localStorage */
 function getCart() {
   const data = localStorage.getItem("carritoCafe");
   return data ? JSON.parse(data) : [];
@@ -8,7 +10,7 @@ function saveCart(cart) {
   localStorage.setItem("carritoCafe", JSON.stringify(cart));
 }
 
-// Añadir producto (o aumentar cantidad)
+/* Función para añadir productos o aumentar cantidades */
 function addToCart(id, nombre, precio) {
   const cart = getCart();
   const item = cart.find((p) => p.id === id);
@@ -20,7 +22,7 @@ function addToCart(id, nombre, precio) {
   saveCart(cart);
 }
 
-// Actualizar cantidad
+/* Función para actualizar cantidad */
 function updateQuantity(id, nuevaCantidad) {
   let cart = getCart();
   cart = cart
@@ -31,20 +33,20 @@ function updateQuantity(id, nuevaCantidad) {
   saveCart(cart);
 }
 
-// Eliminar producto
+/* Función para eliminar productos */
 function removeFromCart(id) {
   let cart = getCart();
   cart = cart.filter((item) => item.id !== id);
   saveCart(cart);
 }
 
-// Limpiar carrito y envío
+/* Función para limpiar el carrito y el envío */
 function clearOrder() {
   localStorage.removeItem("carritoCafe");
   localStorage.removeItem("datosEnvioCafe");
 }
 
-// Datos de envío
+/* Función para registrar los datos de envío */
 function saveShipping(data) {
   localStorage.setItem("datosEnvioCafe", JSON.stringify(data));
 }
@@ -54,7 +56,7 @@ function getShipping() {
   return data ? JSON.parse(data) : null;
 }
 
-// --- Notificación flotante (asume un div#notification) ---
+/* Función para las notificaciones flotantes */
 function showNotification(message) {
   const notification = document.getElementById("notification");
   if (!notification) return;
@@ -65,7 +67,7 @@ function showNotification(message) {
   }, 2000);
 }
 
-// --- Menú responsive (asume #nav-toggle y #nav-menu) ---
+/* Función para el menú de navgación */
 function initMenu() {
   const navToggle = document.getElementById("nav-toggle");
   const navMenu = document.getElementById("nav-menu");
@@ -83,7 +85,7 @@ function initMenu() {
   });
 }
 
-// Ejecutar al cargar cada página
+/* Función para cargar al inicio  */
 document.addEventListener("DOMContentLoaded", () => {
   initMenu();
 });

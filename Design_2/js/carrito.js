@@ -1,6 +1,11 @@
+/* Autor: Kevin López // Fecha: 21-dic-2025 // Proyecto Final*/
+
+/* Función para cargar al inicio  */
 document.addEventListener("DOMContentLoaded", () => {
   const cartContainer = document.getElementById("cart-container");
   const formDireccion = document.getElementById("form-direccion");
+
+  /* Función para renderizar el carrito */
 
   function renderCart() {
     const cart = getCart();
@@ -58,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cartContainer.innerHTML = html;
 
-    // Listeners cantidad
+    /* Función para listeners de cantidad */
     cartContainer.querySelectorAll(".input-cantidad").forEach((input) => {
       input.addEventListener("change", (e) => {
         const fila = e.target.closest("tr");
@@ -74,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Listeners eliminar
+    /* Función para listeners de eliminar*/
     cartContainer.querySelectorAll(".btn-remove").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const fila = e.target.closest("tr");
@@ -85,6 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  /* Función para renderizar el carrito */
 
   renderCart();
 
