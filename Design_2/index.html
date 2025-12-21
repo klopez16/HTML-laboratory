@@ -3,18 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Café Express 3 - Inicio</title>
+    <title>Café Express Kevin - Inicio</title>
     <link rel="stylesheet" href="css/index.css" />
+    <!--Conexión con Google Fonts para el uso de fuentes de textos externas-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="header">
-      <div class="logo">Café Express 3</div>
+      <div class="logo">Café Express Kevin</div>
       <nav class="nav" id="nav-menu">
         <a href="#inicio">Inicio</a>
         <a href="#menu">Menú</a>
         <a href="#sobre-nosotros">Sobre nosotros</a>
         <a href="#contacto">Contacto</a>
-        <a href="carrito.html" class="cart-link">Carrito</a>
+        <a href="carrito.html" class="nav-link">Carrito</a>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
         ☰
@@ -26,28 +37,39 @@
     <main>
       <section id="inicio" class="section hero">
         <div class="hero-content">
-          <h1>Tu café express para llevar</h1>
+          <h1>Café Express Kevin</h1>
           <p>
-            En <strong>Café Express 3</strong> preparamos Americano, Capuccino y
-            Mokaccino en minutos, listos para acompañar tu día.
+            En tu cafetería express preparamos tus sabores favoritos: Americano,
+            Capuccino y Mocaccino. Todo en el tiempo que tu lo requieres, listos
+            para acompañar tu día.
           </p>
+        </div>
+      </section>
+      <section class="media_coffee">
+        <div class="coffee-image">
+          <img src="media/front_cafe.png" alt="Café Express" />
         </div>
       </section>
 
       <section id="menu" class="section">
         <h2>Menú</h2>
-        <p>Elige tu café favorito y añádelo al carrito.</p>
-
+        <p>Seleciona tu café favorito y agrégalo a tu carrito.</p>
+        <p>
+          <i
+            >Debes dar clic en el boton de Añadir la cantidad de veces que
+            requieras tu producto ;).</i
+          >
+        </p>
         <div class="cards">
           <article class="card">
             <h3>Americano</h3>
-            <p>Café filtrado intenso, perfecto para despertar.</p>
-            <p class="price">$2.50</p>
+            <p><i>Café zarumeño filtrado intenso, perfecto aroma.</i></p>
+            <p class="price">$1.99</p>
             <button
               class="btn-add"
               data-id="americano"
               data-nombre="Americano"
-              data-precio="2.50"
+              data-precio="1.99"
             >
               Añadir
             </button>
@@ -55,27 +77,27 @@
 
           <article class="card">
             <h3>Capuccino</h3>
-            <p>Espresso con leche espumosa y un toque de cacao.</p>
-            <p class="price">$3.00</p>
+            <p><i>Café zarumeño con leche espumosa y un toque de canela.</i></p>
+            <p class="price">$2.99</p>
             <button
               class="btn-add"
               data-id="capuccino"
               data-nombre="Capuccino"
-              data-precio="3.00"
+              data-precio="2.99"
             >
               Añadir
             </button>
           </article>
 
           <article class="card">
-            <h3>Mokaccino</h3>
-            <p>Espresso, chocolate y leche cremosa.</p>
-            <p class="price">$3.50</p>
+            <h3>Mocaccino</h3>
+            <p><i>Café zarumeño con chocolate y leche cremosa.</i></p>
+            <p class="price">$2.99</p>
             <button
               class="btn-add"
-              data-id="mokaccino"
-              data-nombre="Mokaccino"
-              data-precio="3.50"
+              data-id="mocaccino"
+              data-nombre="Mocaccino"
+              data-precio="2.99"
             >
               Añadir
             </button>
