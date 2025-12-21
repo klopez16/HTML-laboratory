@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito - Café Express 3</title>
+    <link rel="stylesheet" href="css/carrito.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">Café Express 3</div>
+      <nav class="nav" id="nav-menu">
+        <a href="index.html#inicio">Inicio</a>
+        <a href="index.html#menu">Menú</a>
+        <a href="index.html#sobre-nosotros">Sobre nosotros</a>
+        <a href="index.html#contacto">Contacto</a>
+        <a href="carrito.html" class="cart-link">Carrito</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle">☰</button>
+    </header>
+
+    <div class="notification" id="notification"></div>
+
+    <main class="section">
+      <h1>Tu carrito</h1>
+      <p>Modifica las cantidades o elimina cafés antes de continuar.</p>
+
+      <div id="cart-container"></div>
+
+      <h2>Dirección de entrega</h2>
+      <form id="form-direccion" class="direccion-form">
+        <label>
+          Nombre completo
+          <input type="text" name="nombre" required />
+        </label>
+        <label>
+          Teléfono
+          <input type="tel" name="telefono" required />
+        </label>
+        <label>
+          Dirección
+          <input type="text" name="direccion" required />
+        </label>
+        <label>
+          Referencia
+          <textarea name="referencia" rows="3"></textarea>
+        </label>
+        <button type="submit">Continuar al pago</button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      © 2025 Café Express 3. Todos los derechos reservados.
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/carrito.js"></script>
+  </body>
+</html>

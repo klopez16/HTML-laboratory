@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Café Express 3 - Inicio</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">Café Express 3</div>
+      <nav class="nav" id="nav-menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#sobre-nosotros">Sobre nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <a href="carrito.html" class="cart-link">Carrito</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+        ☰
+      </button>
+    </header>
+
+    <div class="notification" id="notification"></div>
+
+    <main>
+      <section id="inicio" class="section hero">
+        <div class="hero-content">
+          <h1>Tu café express para llevar</h1>
+          <p>
+            En <strong>Café Express 3</strong> preparamos Americano, Capuccino y
+            Mokaccino en minutos, listos para acompañar tu día.
+          </p>
+        </div>
+      </section>
+
+      <section id="menu" class="section">
+        <h2>Menú</h2>
+        <p>Elige tu café favorito y añádelo al carrito.</p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Americano</h3>
+            <p>Café filtrado intenso, perfecto para despertar.</p>
+            <p class="price">$2.50</p>
+            <button
+              class="btn-add"
+              data-id="americano"
+              data-nombre="Americano"
+              data-precio="2.50"
+            >
+              Añadir
+            </button>
+          </article>
+
+          <article class="card">
+            <h3>Capuccino</h3>
+            <p>Espresso con leche espumosa y un toque de cacao.</p>
+            <p class="price">$3.00</p>
+            <button
+              class="btn-add"
+              data-id="capuccino"
+              data-nombre="Capuccino"
+              data-precio="3.00"
+            >
+              Añadir
+            </button>
+          </article>
+
+          <article class="card">
+            <h3>Mokaccino</h3>
+            <p>Espresso, chocolate y leche cremosa.</p>
+            <p class="price">$3.50</p>
+            <button
+              class="btn-add"
+              data-id="mokaccino"
+              data-nombre="Mokaccino"
+              data-precio="3.50"
+            >
+              Añadir
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section id="sobre-nosotros" class="section">
+        <h2>Sobre nosotros</h2>
+        <p>
+          Somos una cafetería express en Quito, pensada para personas que
+          necesitan un buen café sin perder tiempo.
+        </p>
+        <p>
+          Trabajamos con una carta corta para servir rápido, manteniendo calidad
+          y sabor.
+        </p>
+      </section>
+
+      <section id="contacto" class="section">
+        <h2>Contacto</h2>
+        <div class="contact-grid">
+          <form class="contact-form">
+            <label>
+              Nombre
+              <input type="text" name="nombre" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Mensaje
+              <textarea name="mensaje" rows="4" required></textarea>
+            </label>
+            <button type="submit">Enviar</button>
+          </form>
+
+          <div class="contact-info">
+            <h3>Dirección</h3>
+            <p>Av. Ejemplo y Calle Ficticia, Quito, Ecuador</p>
+            <h3>Horario</h3>
+            <p>Lunes a viernes: 7:00 - 19:00</p>
+            <p>Sábados: 8:00 - 14:00</p>
+            <h3>Teléfono</h3>
+            <p>+593 99 999 9999</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2025 Café Express 3. Todos los derechos reservados.
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

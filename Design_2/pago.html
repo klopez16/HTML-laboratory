@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pago - Café Express 3</title>
+    <link rel="stylesheet" href="css/pago.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">Café Express 3</div>
+      <nav class="nav" id="nav-menu">
+        <a href="index.html#inicio">Inicio</a>
+        <a href="index.html#menu">Menú</a>
+        <a href="index.html#sobre-nosotros">Sobre nosotros</a>
+        <a href="index.html#contacto">Contacto</a>
+        <a href="carrito.html" class="cart-link">Carrito</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle">☰</button>
+    </header>
+
+    <div class="notification" id="notification"></div>
+
+    <main class="section">
+      <h1>Pago ficticio</h1>
+      <p>Esta página solo simula un pago, no se realiza ningún cobro real.</p>
+
+      <div id="resumen"></div>
+
+      <h2>Datos de pago</h2>
+      <form id="form-pago" class="pago-form">
+        <label>
+          Nombre en la tarjeta
+          <input type="text" name="nombreTarjeta" required />
+        </label>
+        <label>
+          Número de tarjeta (ficticio)
+          <input type="text" name="numeroTarjeta" required />
+        </label>
+        <label>
+          Fecha de expiración
+          <input type="text" name="exp" placeholder="MM/AA" required />
+        </label>
+        <label>
+          CVV
+          <input type="password" name="cvv" required />
+        </label>
+        <button type="submit">Pagar ahora</button>
+      </form>
+
+      <div id="mensaje-exito" class="mensaje-exito">
+        <!-- Se rellena por JS -->
+      </div>
+    </main>
+
+    <footer class="footer">
+      © 2025 Café Express 3. Todos los derechos reservados.
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/pago.js"></script>
+  </body>
+</html>
