@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo HTML5 - Elementos Avanzados</title>
+    <style>
+        /* Estilos mínimos solo para organización visual */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Demostración de Elementos HTML5</h1>
+        <p>Ejemplo profesional sin CSS externo que muestra elementos avanzados de HTML5</p>
+    </header>
+
+    <!-- Sección de formularios avanzados -->
+    <section id="formularios">
+        <h2>Formularios Avanzados HTML5</h2>
+        
+        <form id="miFormulario">
+            <!-- Campo de email con validación automática -->
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" 
+                       placeholder="usuario@ejemplo.com" 
+                       required>
+                <small>HTML5 validará automáticamente el formato del correo</small>
+            </div>
+            
+            <!-- Selector de fecha -->
+            <div class="form-group">
+                <label for="fecha">Fecha de inicio:</label>
+                <input type="date" id="fecha" name="fecha" 
+                       min="2024-01-01" max="2026-12-31">
+                <small>Seleccione una fecha usando el calendario interactivo</small>
+            </div>
+            
+            <!-- Control de rango -->
+            <div class="form-group">
+                <label for="satisfaccion">Nivel de satisfacción: 
+                    <span id="valorRango">5</span>/10
+                </label>
+                <input type="range" id="satisfaccion" name="satisfaccion" 
+                       min="1" max="10" value="5" step="1">
+                <small>Deslice para seleccionar un valor entre 1 y 10</small>
+            </div>
+            
+            <!-- Selector de color -->
+            <div class="form-group">
+                <label for="colorPreferido">Color preferido:</label>
+                <input type="color" id="colorPreferido" name="colorPreferido" 
+                       value="#4CAF50">
+                <small>Haga clic para abrir la paleta de colores</small>
+            </div>
+            
+            <button type="button" id="mostrarValores">Mostrar Valores</button>
+        </form>
+    </section>
+
+    <!-- Sección de multimedia -->
+    <section id="multimedia">
+        <h2>Elementos Multimedia</h2>
+        
+        <!-- Elemento de video -->
+        <div class="form-group">
+            <h3>Reproductor de Video</h3>
+            <video id="miVideo" width="600" controls>
+                <!-- Fuentes alternativas para compatibilidad -->
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.webm" type="video/webm">
+                Tu navegador no soporta el elemento de video HTML5.
+            </video>
+            <p>Video de ejemplo: Big Buck Bunny (Licencia Blender Foundation)</p>
+        </div>
+        
+        <!-- Elemento de audio -->
+        <div class="form-group">
+            <h3>Reproductor de Audio</h3>
+            <audio id="miAudio" controls>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.ogg" type="audio/ogg">
+                Tu navegador no soporta el elemento de audio HTML5.
+            </audio>
+            <p>Audio de ejemplo: SoundHelix Song 1</p>
+        </div>
+    </section>
+
+    <!-- Sección de Canvas -->
+    <section id="graficos">
+        <h2>Gráficos con Canvas</h2>
+        
+        <div class="form-group">
+            <p>El elemento canvas permite dibujar gráficos mediante JavaScript:</p>
+            <canvas id="miCanvas" width="600" height="200">
+                Tu navegador no soporta el elemento canvas.
+            </canvas>
+            <br>
+            <button id="dibujarCirculo">Dibujar Círculo</button>
+            <button id="dibujarRectangulo">Dibujar Rectángulo</button>
+            <button id="limpiarCanvas">Limpiar Canvas</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Ejemplo HTML5 - Todos los elementos funcionan nativamente en el navegador</p>
+    </footer>
+
+    <script>
+        // JavaScript para funcionalidad adicional
+        
+        // Control del rango
+        const rango = document.getElementById('satisfaccion');
+        const valorRango = document.getElementById('valorRango');
+        
+        rango.addEventListener('input', function() {
+            valorRango.textContent = this.value;
+        });
+        
+        // Mostrar valores del formulario
+        document.getElementById('mostrarValores').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const fecha = document.getElementById('fecha').value;
+            const satisfaccion = document.getElementById('satisfaccion').value;
+            const color = document.getElementById('colorPreferido').value;
+            
+            alert(`Valores seleccionados:\n
+                   Email: ${email || 'No ingresado'}\n
+                   Fecha: ${fecha || 'No seleccionada'}\n
+                   Satisfacción: ${satisfaccion}/10\n
+                   Color: ${color}`);
+        });
+        
+        // Funciones para el canvas
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function dibujarCirculo() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(300, 100, 50, 0, Math.PI * 2);
+            ctx.fillStyle = document.getElementById('colorPreferido').value;
+            ctx.fill();
+            ctx.stroke();
+            
+            // Añadir texto
+            ctx.fillStyle = '#000';
+            ctx.font = '14px Arial';
+            ctx.fillText('Círculo dibujado con canvas', 200, 180);
+        }
+        
+        function dibujarRectangulo() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = document.getElementById('colorPreferido').value;
+            ctx.fillRect(200, 50, 200, 100);
+            ctx.strokeRect(200, 50, 200, 100);
+            
+            // Añadir texto
+            ctx.fillStyle = '#000';
+            ctx.font = '14px Arial';
+            ctx.fillText('Rectángulo dibujado con canvas', 200, 180);
+        }
+        
+        function limpiarCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        
+        // Asignar eventos a los botones
+        document.getElementById('dibujarCirculo').addEventListener('click', dibujarCirculo);
+        document.getElementById('dibujarRectangulo').addEventListener('click', dibujarRectangulo);
+        document.getElementById('limpiarCanvas').addEventListener('click', limpiarCanvas);
+        
+        // Dibujar algo inicial en el canvas
+        dibujarCirculo();
+    </script>
+</body>
+</html>

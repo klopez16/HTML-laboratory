@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Desarrollo Web - HTML5</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Encabezado con navegación -->
+    <header class="site-header">
+        <div class="header-content">
+            <h1><i class="fas fa-code"></i> DevBlog</h1>
+            <p class="tagline">Explorando las mejores prácticas en desarrollo web</p>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#"><i class="fas fa-html5"></i> HTML5</a></li>
+                    <li><a href="#"><i class="fas fa-css3-alt"></i> CSS3</a></li>
+                    <li><a href="#"><i class="fas fa-js"></i> JavaScript</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="content-wrapper">
+        <!-- Artículo principal -->
+        <article class="main-article">
+            <header class="article-header">
+                <h2>La importancia de la semántica en HTML5</h2>
+                <div class="article-meta">
+                    <span class="author"><i class="fas fa-user"></i> Ana Martínez</span>
+                    <time datetime="2024-01-15T09:00:00" class="publish-date">
+                        <i class="far fa-calendar"></i> 15 de Enero, 2024
+                    </time>
+                    <span class="read-time"><i class="far fa-clock"></i> 4 min lectura</span>
+                </div>
+            </header>
+            
+            <section class="content-section">
+                <h3>Introducción a los elementos semánticos</h3>
+                <p>HTML5 introduce una serie de elementos semánticos que permiten estructurar el contenido de manera significativa, mejorando tanto la accesibilidad como el SEO.</p>
+                <p>Estos elementos proporcionan contexto sobre el tipo de contenido que contienen, facilitando su interpretación por navegadores, motores de búsqueda y tecnologías asistivas.</p>
+            </section>
+            
+            <figure class="content-figure">
+                <div class="figure-placeholder">
+                    <i class="fas fa-sitemap"></i>
+                    <p>Estructura semántica HTML5</p>
+                </div>
+                <figcaption>Figura 1: Representación visual de la jerarquía semántica en HTML5 moderno.</figcaption>
+            </figure>
+            
+            <section class="content-section">
+                <h3>Elementos clave y su uso</h3>
+                <p>Cada elemento semántico tiene un propósito específico: &lt;header&gt; para encabezados, &lt;nav&gt; para navegación, &lt;main&gt; para contenido principal, y &lt;footer&gt; para información de cierre.</p>
+                <p>La combinación adecuada de estos elementos crea documentos bien estructurados y fácilmente mantenibles.</p>
+            </section>
+        </article>
+        
+        <!-- Contenido relacionado -->
+        <aside class="related-content">
+            <h3><i class="fas fa-bookmark"></i> Artículos relacionados</h3>
+            <div class="related-item">
+                <h4>CSS Grid en acción</h4>
+                <p>Técnicas modernas de layout para interfaces responsivas.</p>
+                <time datetime="2024-01-10">10 Ene 2024</time>
+            </div>
+            <div class="related-item">
+                <h4>JavaScript ES6+</h4>
+                <p>Características modernas de JavaScript que debes conocer.</p>
+                <time datetime="2024-01-05">5 Ene 2024</time>
+            </div>
+            <div class="related-item">
+                <h4>Accesibilidad web</h4>
+                <p>Principios para crear experiencias inclusivas.</p>
+                <time datetime="2023-12-20">20 Dic 2023</time>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre DevBlog</h4>
+                <p>Recursos y tutoriales para desarrolladores web modernos.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-envelope"></i> angelfernando176@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +593 986 550 918</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 DevBlog. Desarrollado con HTML5 semántico.</p>
+            <p>Última actualización: <time datetime="2024-01-15">15/01/2025</time></p>
+        </div>
+    </footer>
+</body>
+</html>
