@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - KevWeb!</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!--Conexión con Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-top">
+          <h1 class="nombre-logo">KevWeb!</h1>
+
+          <div class="logo-container">
+            <img src="media/logo_kev_web_no_placa.png" alt="Logo KevWeb" />
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="company.html">Empresa</a></li>
+            <li><a href="services.html">Productos</a></li>
+            <li><a href="offers.html">Oferta del Mes</a></li>
+            <li><a href="location.html">Localización</a></li>
+            <li><a href="contact.html" class="active">Contacto</a></li>
+            <li><a href="news.html">Noticias</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container-main">
+      <main class="main-content">
+        <!-- Hero Section -->
+        <section class="contact-hero">
+          <h2 class="page-title">Contáctanos</h2>
+          <p class="subtitle">
+            Estamos listos para hacer realidad tu proyecto digital
+          </p>
+        </section>
+
+        <!-- Contenedor Principal -->
+        <div class="contact-container">
+          <!-- Información de Contacto -->
+          <aside class="contact-info">
+            <h3>Información de Contacto</h3>
+
+            <div class="info-item-contact">
+              <div class="info-icon-contact">📍</div>
+              <div class="info-text-contact">
+                <strong>Dirección</strong>
+                <p id="direccion-contacto">Quito, Pichincha, Ecuador</p>
+              </div>
+            </div>
+
+            <div class="info-item-contact">
+              <div class="info-icon-contact">📞</div>
+              <div class="info-text-contact">
+                <strong>Teléfono</strong>
+                <p id="telefono-contacto">+593-99-123-4567</p>
+              </div>
+            </div>
+
+            <div class="info-item-contact">
+              <div class="info-icon-contact">✉️</div>
+              <div class="info-text-contact">
+                <strong>Email</strong>
+                <p id="email-contacto">contacto@kevweb.com</p>
+              </div>
+            </div>
+
+            <div class="info-item-contact">
+              <div class="info-icon-contact">🕒</div>
+              <div class="info-text-contact">
+                <strong>Horario</strong>
+                <p id="horario-contacto">Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <h4>Síguenos en:</h4>
+              <div class="social-icons">
+                <a href="#" class="social-icon" title="Facebook">📘</a>
+                <a href="#" class="social-icon" title="Instagram">📷</a>
+                <a href="#" class="social-icon" title="LinkedIn">💼</a>
+                <a href="#" class="social-icon" title="Twitter">🐦</a>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Formulario de Contacto -->
+          <section class="contact-form-section">
+            <h3>Envíanos un Mensaje</h3>
+            <p class="form-description">
+              Completa el formulario y nos pondremos en contacto contigo lo
+              antes posible.
+            </p>
+
+            <form id="contactForm" class="contact-form" novalidate>
+              <!-- Nombre -->
+              <div class="form-group">
+                <label for="nombre">Nombre Completo *</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Ej: Juan Pérez"
+                  required
+                />
+                <span class="error-message" id="error-nombre"></span>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email">Correo Electrónico *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Ej: juan@ejemplo.com"
+                  required
+                />
+                <span class="error-message" id="error-email"></span>
+              </div>
+
+              <!-- Teléfono -->
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  placeholder="Ej: 0991234567"
+                />
+                <span class="error-message" id="error-telefono"></span>
+              </div>
+
+              <!-- Servicio de Interés -->
+              <div class="form-group">
+                <label for="servicio">Servicio de Interés</label>
+                <select id="servicio" name="servicio">
+                  <option value="">Selecciona un servicio</option>
+                  <!-- Se llenarán dinámicamente -->
+                </select>
+              </div>
+
+              <!-- Mensaje -->
+              <div class="form-group">
+                <label for="mensaje">Mensaje *</label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  rows="6"
+                  placeholder="Cuéntanos sobre tu proyecto..."
+                  required
+                ></textarea>
+                <span class="error-message" id="error-mensaje"></span>
+              </div>
+
+              <!-- Botones -->
+              <div class="form-actions">
+                <button type="submit" class="btn-submit" id="btnEnviar">
+                  <span class="btn-text">Enviar Mensaje</span>
+                  <span class="btn-loader" style="display: none"
+                    >⏳ Enviando...</span
+                  >
+                </button>
+                <button type="reset" class="btn-reset">
+                  Limpiar Formulario
+                </button>
+              </div>
+
+              <!-- Mensaje de éxito/error -->
+              <div
+                class="form-message"
+                id="formMessage"
+                style="display: none"
+              ></div>
+            </form>
+          </section>
+        </div>
+
+        <!-- Sección de Preguntas Frecuentes -->
+        <section class="faq-section">
+          <h2 class="section-title">Preguntas Frecuentes</h2>
+
+          <div class="faq-grid">
+            <div class="faq-item">
+              <h4>⏱️ ¿Cuánto tiempo toma desarrollar un sitio web?</h4>
+              <p>
+                Dependiendo de la complejidad, un sitio básico toma de 1-2
+                semanas, mientras que proyectos más complejos pueden requerir
+                4-8 semanas.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h4>💰 ¿Cómo son los métodos de pago?</h4>
+              <p>
+                Aceptamos pagos en efectivo, transferencia bancaria y tarjetas
+                de crédito. Trabajamos con un esquema de pagos parciales: 50% al
+                inicio y 50% al finalizar.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h4>🔧 ¿Ofrecen soporte después de la entrega?</h4>
+              <p>
+                Sí, incluimos 30 días de soporte gratuito. Después puedes
+                contratar nuestro plan de mantenimiento mensual.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h4>📱 ¿Los sitios son responsive?</h4>
+              <p>
+                Todos nuestros sitios web están optimizados para verse
+                perfectamente en computadoras, tablets y móviles.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; Kevin López - 2026 KevWeb! - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/db-connection.js"></script>
+    <script>
+      $(document).ready(function () {
+        cargarInfoContacto();
+        cargarServiciosSelect();
+        verificarServicioURL();
+        configurarValidaciones();
+
+        // Animaciones
+        animarEntrada();
+      });
+
+      // Cargar información de contacto
+      function cargarInfoContacto() {
+        const empresa = obtenerDatosEmpresa();
+
+        if (empresa) {
+          $("#direccion-contacto").text(empresa.direccion);
+          $("#telefono-contacto").text(empresa.telefono);
+          $("#email-contacto").text(empresa.email);
+          $("#horario-contacto").text(empresa.horario_atencion);
+        }
+      }
+
+      // Cargar servicios en el select
+      function cargarServiciosSelect() {
+        const servicios = obtenerServicios();
+        let options = '<option value="">Selecciona un servicio</option>';
+
+        servicios.forEach((servicio) => {
+          options += `<option value="${servicio.nombre}">${servicio.nombre}</option>`;
+        });
+
+        $("#servicio").html(options);
+      }
+
+      // Verificar si viene de una oferta (URL parameter)
+      function verificarServicioURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const servicio = urlParams.get("servicio");
+
+        if (servicio) {
+          $("#servicio").val(decodeURIComponent(servicio));
+          // Scroll al formulario
+          $("html, body").animate(
+            {
+              scrollTop: $(".contact-form-section").offset().top - 100,
+            },
+            1000,
+          );
+        }
+      }
+
+      // Configurar validaciones del formulario
+      function configurarValidaciones() {
+        // Validación en tiempo real
+        $("#nombre").on("blur", function () {
+          validarNombre();
+        });
+
+        $("#email").on("blur", function () {
+          validarEmail();
+        });
+
+        $("#telefono").on("blur", function () {
+          validarTelefono();
+        });
+
+        $("#mensaje").on("blur", function () {
+          validarMensaje();
+        });
+
+        // Submit del formulario
+        $("#contactForm").on("submit", function (e) {
+          e.preventDefault();
+          enviarFormulario();
+        });
+
+        // Reset del formulario
+        $(".btn-reset").on("click", function () {
+          limpiarErrores();
+          $("#formMessage").hide();
+        });
+      }
+
+      // Validaciones individuales
+      function validarNombre() {
+        const nombre = $("#nombre").val().trim();
+
+        if (nombre === "") {
+          mostrarError("nombre", "El nombre es obligatorio");
+          return false;
+        }
+
+        if (nombre.length < 3) {
+          mostrarError("nombre", "El nombre debe tener al menos 3 caracteres");
+          return false;
+        }
+
+        limpiarError("nombre");
+        return true;
+      }
+
+      function validarEmail() {
+        const email = $("#email").val().trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email === "") {
+          mostrarError("email", "El email es obligatorio");
+          return false;
+        }
+
+        if (!emailRegex.test(email)) {
+          mostrarError("email", "Ingresa un email válido");
+          return false;
+        }
+
+        limpiarError("email");
+        return true;
+      }
+
+      function validarTelefono() {
+        const telefono = $("#telefono").val().trim();
+
+        // El teléfono es opcional, pero si se ingresa debe ser válido
+        if (telefono !== "") {
+          const telefonoRegex = /^[0-9]{10}$/;
+
+          if (!telefonoRegex.test(telefono.replace(/\s/g, ""))) {
+            mostrarError("telefono", "Ingresa un teléfono válido (10 dígitos)");
+            return false;
+          }
+        }
+
+        limpiarError("telefono");
+        return true;
+      }
+
+      function validarMensaje() {
+        const mensaje = $("#mensaje").val().trim();
+
+        if (mensaje === "") {
+          mostrarError("mensaje", "El mensaje es obligatorio");
+          return false;
+        }
+
+        if (mensaje.length < 10) {
+          mostrarError(
+            "mensaje",
+            "El mensaje debe tener al menos 10 caracteres",
+          );
+          return false;
+        }
+
+        limpiarError("mensaje");
+        return true;
+      }
+
+      // Mostrar/limpiar errores
+      function mostrarError(campo, mensaje) {
+        $(`#${campo}`).addClass("input-error");
+        $(`#error-${campo}`).text(mensaje).show();
+      }
+
+      function limpiarError(campo) {
+        $(`#${campo}`).removeClass("input-error");
+        $(`#error-${campo}`).text("").hide();
+      }
+
+      function limpiarErrores() {
+        $(".input-error").removeClass("input-error");
+        $(".error-message").text("").hide();
+      }
+
+      // Enviar formulario
+      function enviarFormulario() {
+        // Limpiar errores previos
+        limpiarErrores();
+        $("#formMessage").hide();
+
+        // Validar todos los campos
+        const nombreValido = validarNombre();
+        const emailValido = validarEmail();
+        const telefonoValido = validarTelefono();
+        const mensajeValido = validarMensaje();
+
+        if (
+          !nombreValido ||
+          !emailValido ||
+          !telefonoValido ||
+          !mensajeValido
+        ) {
+          mostrarMensajeFormulario(
+            "error",
+            "❌ Por favor corrige los errores en el formulario",
+          );
+          return;
+        }
+
+        // Deshabilitar botón y mostrar loader
+        const $btnEnviar = $("#btnEnviar");
+        $btnEnviar.prop("disabled", true);
+        $(".btn-text").hide();
+        $(".btn-loader").show();
+
+        // Obtener datos del formulario
+        const datosContacto = {
+          nombre: $("#nombre").val().trim(),
+          email: $("#email").val().trim(),
+          telefono: $("#telefono").val().trim(),
+          tipo_servicio_interes: $("#servicio").val(),
+          mensaje: $("#mensaje").val().trim(),
+          fecha_envio: new Date().toISOString(),
+        };
+
+        // Simular envío (en producción, aquí iría la conexión real a la BD)
+        setTimeout(function () {
+          const guardado = guardarMensajeContacto(datosContacto);
+
+          if (guardado) {
+            mostrarMensajeFormulario(
+              "success",
+              "✅ ¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.",
+            );
+            $("#contactForm")[0].reset();
+
+            // Scroll al mensaje de éxito
+            $("html, body").animate(
+              {
+                scrollTop: $("#formMessage").offset().top - 100,
+              },
+              500,
+            );
+          } else {
+            mostrarMensajeFormulario(
+              "error",
+              "❌ Hubo un error al enviar el mensaje. Por favor intenta nuevamente.",
+            );
+          }
+
+          // Rehabilitar botón
+          $btnEnviar.prop("disabled", false);
+          $(".btn-text").show();
+          $(".btn-loader").hide();
+        }, 1500); // Simular tiempo de procesamiento
+      }
+
+      // Mostrar mensaje del formulario
+      function mostrarMensajeFormulario(tipo, mensaje) {
+        const $formMessage = $("#formMessage");
+        $formMessage.removeClass("message-success message-error");
+        $formMessage.addClass(`message-${tipo}`);
+        $formMessage.html(mensaje);
+        $formMessage.slideDown(300);
+      }
+
+      // Animación de entrada
+      function animarEntrada() {
+        $(".contact-info, .contact-form-section")
+          .css({
+            opacity: "0",
+            transform: "translateY(30px)",
+          })
+          .each(function (index) {
+            $(this)
+              .delay(index * 200)
+              .animate(
+                {
+                  opacity: 1,
+                },
+                600,
+                function () {
+                  $(this).css("transform", "translateY(0)");
+                },
+              );
+          });
+
+        $(".faq-item").each(function (index) {
+          $(this)
+            .css({
+              opacity: "0",
+              transform: "translateX(-20px)",
+            })
+            .delay(index * 100)
+            .animate(
+              {
+                opacity: 1,
+              },
+              500,
+              function () {
+                $(this).css("transform", "translateX(0)");
+              },
+            );
+        });
+      }
+    </script>
+  </body>
+</html>

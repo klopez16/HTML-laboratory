@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oferta del Mes - KevWeb!</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!--Conexión con Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-top">
+          <h1 class="nombre-logo">KevWeb!</h1>
+
+          <div class="logo-container">
+            <img src="media/logo_kev_web_no_placa.png" alt="Logo KevWeb" />
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="company.html">Empresa</a></li>
+            <li><a href="services.html">Productos</a></li>
+            <li><a href="offers.html" class="active">Oferta del Mes</a></li>
+            <li><a href="location.html">Localización</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="news.html">Noticias</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container-main">
+      <main class="main-content">
+        <!-- Banner de Oferta Principal -->
+        <section class="offer-hero">
+          <div class="offer-badge-hero">
+            <span class="badge-text">¡OFERTA ESPECIAL!</span>
+            <span class="badge-month">Enero 2026</span>
+          </div>
+          <h2 class="page-title">Ofertas del Mes</h2>
+          <p class="subtitle">Aprovecha nuestros descuentos especiales</p>
+        </section>
+
+        <!-- Oferta Destacada Principal -->
+        <section class="featured-offer" id="oferta-principal">
+          <!-- Se cargará dinámicamente -->
+        </section>
+
+        <!-- Todas las Ofertas Disponibles -->
+        <section class="all-offers">
+          <h2 class="section-title">Todas Nuestras Ofertas</h2>
+          <div class="offers-grid" id="ofertas-grid">
+            <!-- Se cargarán dinámicamente -->
+          </div>
+        </section>
+
+        <!-- Contador de Tiempo -->
+        <section class="countdown-section">
+          <div class="countdown-container">
+            <h3>⏰ ¡Las ofertas terminan pronto!</h3>
+            <p>Aprovecha estos descuentos antes de que finalice el mes</p>
+            <div class="countdown" id="countdown">
+              <div class="countdown-item">
+                <span class="countdown-value" id="days">00</span>
+                <span class="countdown-label">Días</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-value" id="hours">00</span>
+                <span class="countdown-label">Horas</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-value" id="minutes">00</span>
+                <span class="countdown-label">Minutos</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-value" id="seconds">00</span>
+                <span class="countdown-label">Segundos</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="cta-section">
+          <div class="cta-content">
+            <h3>¿Listo para empezar tu proyecto?</h3>
+            <p>Contáctanos ahora y aprovecha estas ofertas exclusivas</p>
+            <a href="contact.html" class="btn-cta">Solicitar Ahora</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; Kevin López - 2026 KevWeb! - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/db-connection.js"></script>
+    <script>
+      $(document).ready(function () {
+        cargarOfertaPrincipal();
+        cargarTodasLasOfertas();
+        iniciarContador();
+
+        // Animación de entrada
+        animarEntrada();
+      });
+
+      // Cargar oferta principal (la de mayor descuento)
+      function cargarOfertaPrincipal() {
+        const ofertas = obtenerServiciosEnOferta();
+
+        if (ofertas.length === 0) {
+          $("#oferta-principal").html(`
+            <div class="no-offers">
+              <p>😔 No hay ofertas disponibles en este momento</p>
+              <a href="services.html" class="btn-servicios">Ver Todos los Servicios</a>
+            </div>
+          `);
+          return;
+        }
+
+        // Ordenar por descuento (mayor primero)
+        ofertas.sort((a, b) => b.descuento_oferta - a.descuento_oferta);
+        const ofertaPrincipal = ofertas[0];
+
+        const precioOriginal = ofertaPrincipal.precio_desde;
+        const precioFinal = calcularPrecioConDescuento(
+          precioOriginal,
+          ofertaPrincipal.descuento_oferta,
+        );
+        const ahorro = precioOriginal - precioFinal;
+
+        const html = `
+          <div class="featured-offer-content">
+            <div class="featured-badge">
+              <span class="badge-discount">${ofertaPrincipal.descuento_oferta}%</span>
+              <span class="badge-label">DESCUENTO</span>
+            </div>
+            
+            <div class="featured-info">
+              <h2 class="featured-title">${ofertaPrincipal.nombre}</h2>
+              <p class="featured-description">${ofertaPrincipal.descripcion}</p>
+              
+              <div class="featured-details">
+                <div class="detail-box">
+                  <span class="detail-icon">⏱️</span>
+                  <div class="detail-text">
+                    <strong>Duración</strong>
+                    <span>${ofertaPrincipal.duracion_estimada}</span>
+                  </div>
+                </div>
+                
+                <div class="detail-box">
+                  <span class="detail-icon">💻</span>
+                  <div class="detail-text">
+                    <strong>Tecnologías</strong>
+                    <span>${ofertaPrincipal.tecnologias}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="featured-pricing">
+                <div class="price-comparison">
+                  <div class="old-price">
+                    <span class="label">Precio Regular:</span>
+                    <span class="value">$${precioOriginal.toFixed(2)}</span>
+                  </div>
+                  <div class="new-price">
+                    <span class="label">Precio con Descuento:</span>
+                    <span class="value">$${precioFinal.toFixed(2)}</span>
+                  </div>
+                </div>
+                <div class="savings">
+                  <span class="savings-icon">💰</span>
+                  <span>¡Ahorras $${ahorro.toFixed(2)}!</span>
+                </div>
+              </div>
+              
+              <div class="featured-actions">
+                <a href="contact.html" class="btn-featured-primary">¡Quiero Esta Oferta!</a>
+                <a href="services.html" class="btn-featured-secondary">Ver Más Servicios</a>
+              </div>
+            </div>
+            
+            <div class="featured-visual">
+              <div class="visual-circle">
+                <span class="visual-icon">🌐</span>
+              </div>
+              <div class="visual-text">
+                <p class="highlight">¡OFERTA LIMITADA!</p>
+                <p>Solo este mes</p>
+              </div>
+            </div>
+          </div>
+        `;
+
+        $("#oferta-principal").html(html);
+      }
+
+      // Cargar todas las ofertas
+      function cargarTodasLasOfertas() {
+        const ofertas = obtenerServiciosEnOferta();
+
+        if (ofertas.length === 0) {
+          $("#ofertas-grid").html(`
+            <p class="no-offers-text">No hay ofertas disponibles</p>
+          `);
+          return;
+        }
+
+        let html = "";
+
+        ofertas.forEach((oferta) => {
+          const precioOriginal = oferta.precio_desde;
+          const precioFinal = calcularPrecioConDescuento(
+            precioOriginal,
+            oferta.descuento_oferta,
+          );
+          const ahorro = precioOriginal - precioFinal;
+
+          html += `
+            <div class="offer-card">
+              <div class="offer-badge">${oferta.descuento_oferta}% OFF</div>
+              
+              <div class="offer-image">
+                <span class="offer-icon">🎯</span>
+              </div>
+              
+              <div class="offer-content">
+                <h3>${oferta.nombre}</h3>
+                <p class="offer-desc">${oferta.descripcion}</p>
+                
+                <div class="offer-specs">
+                  <div class="spec-item">
+                    <span>⏱️</span>
+                    <span>${oferta.duracion_estimada}</span>
+                  </div>
+                  <div class="spec-item">
+                    <span>💻</span>
+                    <span>${oferta.tecnologias}</span>
+                  </div>
+                </div>
+                
+                <div class="offer-pricing-card">
+                  <div class="price-row">
+                    <span class="price-label">Antes:</span>
+                    <span class="price-old">$${precioOriginal.toFixed(2)}</span>
+                  </div>
+                  <div class="price-row">
+                    <span class="price-label">Ahora:</span>
+                    <span class="price-new">$${precioFinal.toFixed(2)}</span>
+                  </div>
+                  <div class="savings-tag">
+                    Ahorras: $${ahorro.toFixed(2)}
+                  </div>
+                </div>
+                
+                <button class="btn-offer" onclick="solicitarOferta('${oferta.nombre}')">
+                  Solicitar Oferta
+                </button>
+              </div>
+            </div>
+          `;
+        });
+
+        $("#ofertas-grid").html(html);
+      }
+
+      // Iniciar contador regresivo (hasta fin de mes)
+      function iniciarContador() {
+        function actualizarContador() {
+          const ahora = new Date();
+          const finMes = new Date(
+            ahora.getFullYear(),
+            ahora.getMonth() + 1,
+            0,
+            23,
+            59,
+            59,
+          );
+          const diferencia = finMes - ahora;
+
+          if (diferencia <= 0) {
+            $("#countdown").html(
+              '<p class="countdown-ended">¡Las ofertas del mes han terminado!</p>',
+            );
+            return;
+          }
+
+          const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+          const horas = Math.floor(
+            (diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const minutos = Math.floor(
+            (diferencia % (1000 * 60 * 60)) / (1000 * 60),
+          );
+          const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+          $("#days").text(String(dias).padStart(2, "0"));
+          $("#hours").text(String(horas).padStart(2, "0"));
+          $("#minutes").text(String(minutos).padStart(2, "0"));
+          $("#seconds").text(String(segundos).padStart(2, "0"));
+        }
+
+        actualizarContador();
+        setInterval(actualizarContador, 1000);
+      }
+
+      // Solicitar oferta
+      function solicitarOferta(nombreServicio) {
+        // Redirigir a contacto con el servicio pre-seleccionado
+        window.location.href = `contact.html?servicio=${encodeURIComponent(nombreServicio)}`;
+      }
+
+      // Animación de entrada
+      function animarEntrada() {
+        $(".featured-offer-content")
+          .css({
+            opacity: "0",
+            transform: "scale(0.9)",
+          })
+          .animate(
+            {
+              opacity: 1,
+            },
+            800,
+            function () {
+              $(this).css("transform", "scale(1)");
+            },
+          );
+
+        $(".offer-card").each(function (index) {
+          $(this)
+            .css({
+              opacity: "0",
+              transform: "translateY(30px)",
+            })
+            .delay(index * 150)
+            .animate(
+              {
+                opacity: 1,
+              },
+              600,
+              function () {
+                $(this).css("transform", "translateY(0)");
+              },
+            );
+        });
+      }
+    </script>
+  </body>
+</html>

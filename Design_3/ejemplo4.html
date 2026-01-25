@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación y Animación HTML5</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="css/styles4.css">
+</head>
+<body>
+    <header>
+        <h1>Validación y Animación con HTML5/JS</h1>
+    </header>
+
+    <main>
+        <!-- Formulario de validación -->
+        <section class="form-section">
+            <h2>Formulario de Registro</h2>
+            <form id="registrationForm" class="registration-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" placeholder="Ingrese su nombre">
+                    <div id="nombreError" class="error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" placeholder="ejemplo@correo.com">
+                    <div id="emailError" class="error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edad">Edad (18-99):</label>
+                    <input type="number" id="edad" min="18" max="99" placeholder="Ingrese su edad">
+                    <div id="edadError" class="error"></div>
+                </div>
+                
+                <div class="button-group">
+                    <button type="button" id="validarBtn" class="btn-primary">Validar Datos</button>
+                    <button type="reset" id="limpiarBtn" class="btn-secondary">Limpiar Formulario</button>
+                </div>
+            </form>
+            
+            <div id="statusMessage" class="status-message"></div>
+        </section>
+        
+        <!-- Sección de animación -->
+        <section class="animation-section">
+            <h2>Animación Básica</h2>
+            <p class="instruction-text">Haz clic en los botones para animar el cuadrado:</p>
+            
+            <div id="animationBox" class="animation-box"></div>
+            
+            <div class="button-group">
+                <button id="moverBtn" class="btn-animation">Mover Derecha</button>
+                <button id="saltarBtn" class="btn-animation">Hacer Saltar</button>
+                <button id="resetBtn" class="btn-animation">Reiniciar Posición</button>
+            </div>
+            
+            <p class="keyboard-hint">Atajos de teclado: 1=Mover, 2=Saltar, 3=Reiniciar</p>
+        </section>
+    </main>
+    
+    <footer class="site-footer">
+        <p>Ejemplo de HTML5 con CSS y JavaScript externos</p>
+        <p class="tech-info">Tecnologías usadas: HTML5, CSS3, JavaScript ES6</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="js/script.js"></script>
+</body>
+</html>

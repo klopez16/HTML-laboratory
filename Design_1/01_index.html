@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--Autor: Kevin López-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Sistema Solar</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        
+        <!--Conexión con Google Fonts para el uso de fuentes de textos externas-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="nav_bar">
+            <div class="nav_container">
+                <div class="nav_logo">
+                    <h2>Sistema Solar</h2>
+                </div>
+                <ul class="nav_menu">
+                    <li><a href="01_index.html" class="nav-link active">Sistema Solar</a></li>
+                    <li><a href="02_solar.html" class="nav-link">El Sol</a></li>
+                    <li><a href="03_planets.html" class="nav-link">Planetas</a></li>
+                    <li><a href="04_moons.html" class="nav-link">La Luna</a></li>
+                    <li><a href="05_asteroids.html" class="nav-link">Asteroides y Cometas</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <section class="solar_principal">
+                <div class="solar_content">
+                    <h1 class="solar_title">Explora nuestro Sistema Solar</h1>
+                    <p class="solar_subtitle">Nuestro sistema solar incluye al Sol, ocho planetas, cinco planetas 
+                        enanos con nombre oficial, cientos de lunas y miles de asteroides y cometas.</p>
+                    <button class="solar_button" id="startExploration">Comienza la Exploración</button>
+                </div>
+                <div class="solar_explanation">
+                    <p class="solar_subtitle">Se encuentra en la Vía Láctea, una galaxia espiral barrada con dos brazos mayores y dos menores. 
+                        Nuestro Sol se encuentra en un pequeño brazo parcial de la Vía Láctea llamado Brazo de Orión, o Espolón de Orión, 
+                        entre los brazos de Sagitario y Perseo. Nuestro sistema solar orbita el centro de la galaxia a aproximadamente 828000 km/h. 
+                        Tarda unos 230 millones de años en completar una órbita alrededor del centro galáctico.</p>
+                    <img src="media/icon solar_system.png" alt="system" width="350px" height="350px">
+                </div>
+            </section>
+        </main>
+        <!-- Código HTML para el modal de navegación (que es una ventana emergente que se superpone a la página principal) -->
+        <div class="navigation_modal" id="navigationModal">
+            <button class="close_modal" id="closeModal">&times;</button>
+            <div class="navigation_grid">
+                <div class="navigation_card" data-page="02_solar.html">
+                    <span class="icon"> <img src="media/icon sun.png" alt="system" width="75px" height="75px"> </span>
+                    <h3>El Sol</h3>
+                    <p>Descubre datos interesantes acerca del Sol.</p>
+                </div>
+                <div class="navigation_card" data-page="03_planets.html">
+                    <span class="icon"> <img src="media/icon solar_system.png" alt="system" width="75px" height="75px"> </span>
+                    <h3>Planetas</h3>
+                    <p>Descubre datos interesantes acerca de los 8 Planetas del Sistema Solar.</p>
+                </div>
+                <div class="navigation_card" data-page="04_moons.html">
+                    <span class="icon"><img src="media/icon moon.png" alt="system" width="75px" height="75px"></span>
+                    <h3>La Luna</h3>
+                    <p>Descubre datos interesantes acerca de las 4 principales lunas del Sistema Solar.</p>
+                </div>
+                <div class="navigation_card" data-page="05_asteroids.html">
+                    <span class="icon"><img src="media/icon asteroid.png" alt="system" width="75px" height="75px"></span>
+                    <h3>Asteroides y Cometas</h3>
+                    <p>Descubre datos interesantes acerca de los Asteroides y Cometas del Sistema Soalr.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer_content">
+                    <div class="footer_section">
+                        <h3>Sistema Solar</h3>
+                        <p>Aprende más sobre el Sistema Solar</p>
+                    </div>
+                    <div class="footer_section">
+                        <h4>Enlaces Rápidos</h4>
+                        <ul>
+                            <li><a href="01_index.html">Sistema Solar</a></li>
+                            <li><a href="02_solar.html">El Sol</a></li>
+                            <li><a href="03_planets.html">Planetas</a></li>
+                            <li><a href="04_moons.html">La Luna</a></li>
+                            <li><a href="05_asteroids.html">Asteroides y Cometas</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_section">
+                        <h4>Contacto</h4>
+                        <p>Email: <a href="mailto:info@klopez_solar.edu">info@klopez_solar.edu</a></p>
+                        <p>Soporte: <a href="mailto:soporte@klopez_solar.edu">soporte@klopez_solar.edu</a></p>
+                    </div>
+                    <div class="footer_section">
+                        <h4>Referencias de Multimedia</h4>
+                        <p class="footer_APA">For educational or informational purposes NASA content -images, audio, video, related media and files used in the rendition of 
+                            3-dimensional models, such as texture maps and polygon data in any format- generally are not subject to copyright in the United States. 
+                            You may use this material for educational or informational purposes, including photo collections, textbooks, public exhibits, computer 
+                            graphical simulations and Internet Web pages. This general permission extends to personal Web pages.</p>
+                    </div>
+                </div>
+                <div class="footer_bottom">
+                    <p>&copy; Kevin López - 2025 Sistema Solar. Todos los derechos reservados. &copy;</p>
+                </div>
+            </div>
+        </footer>
+            <script src="script.js"></script>
+    </body>
+</html>

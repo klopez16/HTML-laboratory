@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Localización - KevWeb!</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!--Conexión con Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Leaflet CSS para mapas -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-top">
+          <h1 class="nombre-logo">KevWeb!</h1>
+
+          <div class="logo-container">
+            <img src="media/logo_kev_web_no_placa.png" alt="Logo KevWeb" />
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="company.html">Empresa</a></li>
+            <li><a href="services.html">Productos</a></li>
+            <li><a href="offers.html">Oferta del Mes</a></li>
+            <li><a href="location.html" class="active">Localización</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="news.html">Noticias</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container-main">
+      <main class="main-content">
+        <!-- Hero Section -->
+        <section class="location-hero">
+          <h2 class="page-title">Nuestra Ubicación</h2>
+          <p class="subtitle">Encuéntranos fácilmente en Quito, Ecuador</p>
+        </section>
+
+        <!-- Información de Ubicación -->
+        <section class="location-info-section">
+          <div class="location-cards">
+            <!-- Card de Dirección -->
+            <div class="location-card">
+              <div class="location-card-icon">📍</div>
+              <h3>Dirección</h3>
+              <p id="direccion-ubicacion">Quito, Pichincha, Ecuador</p>
+            </div>
+
+            <!-- Card de Horario -->
+            <div class="location-card">
+              <div class="location-card-icon">🕒</div>
+              <h3>Horario de Atención</h3>
+              <p id="horario-ubicacion">Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+            </div>
+
+            <!-- Card de Contacto -->
+            <div class="location-card">
+              <div class="location-card-icon">📞</div>
+              <h3>Contáctanos</h3>
+              <p id="telefono-ubicacion">+593-99-123-4567</p>
+              <p id="email-ubicacion">contacto@kevweb.com</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mapa Interactivo -->
+        <section class="map-section">
+          <h2 class="section-title">Encuéntranos en el Mapa</h2>
+
+          <div class="map-container">
+            <div id="map" class="map"></div>
+          </div>
+
+          <div class="map-info">
+            <p>📌 Haz clic en el marcador para ver más información</p>
+            <button class="btn-directions" onclick="abrirEnGoogleMaps()">
+              🗺️ Abrir en Google Maps
+            </button>
+          </div>
+        </section>
+
+        <!-- Cómo Llegar -->
+        <section class="directions-section">
+          <h2 class="section-title">¿Cómo Llegar?</h2>
+
+          <div class="directions-grid">
+            <!-- En Auto -->
+            <div class="direction-card">
+              <div class="direction-icon">🚗</div>
+              <h3>En Auto</h3>
+              <ul>
+                <li>Toma la Av. 6 de Diciembre hacia el norte</li>
+                <li>Gira a la derecha en la Av. Naciones Unidas</li>
+                <li>Busca el edificio en el sector La Carolina</li>
+                <li>Disponemos de parqueadero para clientes</li>
+              </ul>
+            </div>
+
+            <!-- En Transporte Público -->
+            <div class="direction-card">
+              <div class="direction-icon">🚌</div>
+              <h3>En Transporte Público</h3>
+              <ul>
+                <li>Metro: Estación La Carolina (Línea 1)</li>
+                <li>Trolebús: Parada Naciones Unidas</li>
+                <li>Buses: Líneas que cruzan por Av. 6 de Diciembre</li>
+                <li>A 5 minutos caminando desde el metro</li>
+              </ul>
+            </div>
+
+            <!-- En Taxi/Uber -->
+            <div class="direction-card">
+              <div class="direction-icon">🚕</div>
+              <h3>En Taxi o Uber</h3>
+              <ul>
+                <li>Indica al conductor: "Sector La Carolina"</li>
+                <li>Referencia: Cerca del Parque La Carolina</li>
+                <li>Tiempo desde el aeropuerto: ~30 minutos</li>
+                <li>Zona segura con fácil acceso</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Puntos de Referencia -->
+        <section class="landmarks-section">
+          <h2 class="section-title">Puntos de Referencia Cercanos</h2>
+
+          <div class="landmarks-grid">
+            <div class="landmark-item">
+              <span class="landmark-icon">🏞️</span>
+              <div class="landmark-text">
+                <strong>Parque La Carolina</strong>
+                <p>A 500 metros - 5 min caminando</p>
+              </div>
+            </div>
+
+            <div class="landmark-item">
+              <span class="landmark-icon">🏢</span>
+              <div class="landmark-text">
+                <strong>World Trade Center</strong>
+                <p>A 300 metros - 3 min caminando</p>
+              </div>
+            </div>
+
+            <div class="landmark-item">
+              <span class="landmark-icon">🛒</span>
+              <div class="landmark-text">
+                <strong>Centro Comercial Quicentro</strong>
+                <p>A 800 metros - 10 min caminando</p>
+              </div>
+            </div>
+
+            <div class="landmark-item">
+              <span class="landmark-icon">🏦</span>
+              <div class="landmark-text">
+                <strong>Zona Bancaria</strong>
+                <p>Múltiples bancos en la zona</p>
+              </div>
+            </div>
+
+            <div class="landmark-item">
+              <span class="landmark-icon">☕</span>
+              <div class="landmark-text">
+                <strong>Cafeterías y Restaurantes</strong>
+                <p>Amplia oferta gastronómica cercana</p>
+              </div>
+            </div>
+
+            <div class="landmark-item">
+              <span class="landmark-icon">🅿️</span>
+              <div class="landmark-text">
+                <strong>Estacionamientos</strong>
+                <p>Parqueadero propio y públicos cercanos</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA para Contacto -->
+        <section class="cta-section">
+          <div class="cta-content">
+            <h3>¿Tienes dudas sobre cómo llegar?</h3>
+            <p>Contáctanos y te ayudaremos con las indicaciones exactas</p>
+            <a href="contact.html" class="btn-cta">Contactar Ahora</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; Kevin López - 2026 KevWeb! - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Leaflet JS para mapas -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/db-connection.js"></script>
+    <script>
+      let map;
+      let marker;
+      let latitud = -0.1807;
+      let longitud = -78.4678;
+
+      $(document).ready(function () {
+        cargarInfoUbicacion();
+        inicializarMapa();
+        animarEntrada();
+      });
+
+      // Cargar información de ubicación
+      function cargarInfoUbicacion() {
+        const empresa = obtenerDatosEmpresa();
+
+        if (empresa) {
+          $("#direccion-ubicacion").text(empresa.direccion);
+          $("#horario-ubicacion").text(empresa.horario_atencion);
+          $("#telefono-ubicacion").text(empresa.telefono);
+          $("#email-ubicacion").text(empresa.email);
+
+          // Actualizar coordenadas si existen
+          if (empresa.latitud && empresa.longitud) {
+            latitud = empresa.latitud;
+            longitud = empresa.longitud;
+          }
+        }
+      }
+
+      // Inicializar mapa con Leaflet (OpenStreetMap)
+      function inicializarMapa() {
+        // Crear mapa centrado en Quito
+        map = L.map("map").setView([latitud, longitud], 15);
+
+        // Agregar capa de OpenStreetMap
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap contributors",
+          maxZoom: 19,
+        }).addTo(map);
+
+        // Crear icono personalizado
+        const customIcon = L.divIcon({
+          className: "custom-marker",
+          html: '<div class="marker-pin">📍</div>',
+          iconSize: [40, 40],
+          iconAnchor: [20, 40],
+        });
+
+        // Agregar marcador
+        marker = L.marker([latitud, longitud], { icon: customIcon }).addTo(map);
+
+        // Popup con información
+        marker
+          .bindPopup(
+            `
+          <div class="map-popup">
+            <h4>🌐 KevWeb</h4>
+            <p><strong>Desarrollo Web Profesional</strong></p>
+            <p>📍 Quito, Pichincha, Ecuador</p>
+            <p>📞 +593-99-123-4567</p>
+            <a href="contact.html" class="popup-link">Contáctanos</a>
+          </div>
+        `,
+          )
+          .openPopup();
+
+        // Animación de zoom
+        setTimeout(function () {
+          map.setView([latitud, longitud], 16, {
+            animate: true,
+            duration: 1,
+          });
+        }, 500);
+      }
+
+      // Abrir ubicación en Google Maps
+      function abrirEnGoogleMaps() {
+        const url = `https://www.google.com/maps?q=${latitud},${longitud}`;
+        window.open(url, "_blank");
+      }
+
+      // Animación de entrada
+      function animarEntrada() {
+        $(".location-card").each(function (index) {
+          $(this)
+            .css({
+              opacity: "0",
+              transform: "translateY(30px)",
+            })
+            .delay(index * 150)
+            .animate(
+              {
+                opacity: 1,
+              },
+              600,
+              function () {
+                $(this).css("transform", "translateY(0)");
+              },
+            );
+        });
+
+        $(".direction-card").each(function (index) {
+          $(this)
+            .css({
+              opacity: "0",
+              transform: "scale(0.9)",
+            })
+            .delay(index * 200)
+            .animate(
+              {
+                opacity: 1,
+              },
+              600,
+              function () {
+                $(this).css("transform", "scale(1)");
+              },
+            );
+        });
+
+        $(".landmark-item").each(function (index) {
+          $(this)
+            .css({
+              opacity: "0",
+              transform: "translateX(-20px)",
+            })
+            .delay(index * 80)
+            .animate(
+              {
+                opacity: 1,
+              },
+              500,
+              function () {
+                $(this).css("transform", "translateX(0)");
+              },
+            );
+        });
+      }
+    </script>
+  </body>
+</html>

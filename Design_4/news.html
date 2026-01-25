@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noticias - KevWeb!</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!--Conexión con Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-top">
+          <h1 class="nombre-logo">KevWeb!</h1>
+
+          <div class="logo-container">
+            <img src="media/logo_kev_web_no_placa.png" alt="Logo KevWeb" />
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="company.html">Empresa</a></li>
+            <li><a href="services.html">Productos</a></li>
+            <li><a href="offers.html">Oferta del Mes</a></li>
+            <li><a href="location.html">Localización</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="news.html" class="active">Noticias</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container-main">
+      <main class="main-content">
+        <!-- Hero Section -->
+        <section class="news-hero">
+          <h2 class="page-title">Blog & Noticias</h2>
+          <p class="subtitle">
+            Mantente al día con las últimas tendencias en desarrollo web
+          </p>
+        </section>
+
+        <!-- Filtros por Categoría -->
+        <section class="news-filters">
+          <div class="filters-container">
+            <button class="filter-btn active" data-categoria="all">
+              📚 Todas las Noticias
+            </button>
+            <button class="filter-btn" data-categoria="Diseño Web">
+              🎨 Diseño Web
+            </button>
+            <button class="filter-btn" data-categoria="Design Trends">
+              📈 Tendencias
+            </button>
+            <button class="filter-btn" data-categoria="Elementos Esenciales">
+              ⚙️ Elementos Esenciales
+            </button>
+          </div>
+        </section>
+
+        <!-- Artículo Destacado -->
+        <section class="featured-article" id="articulo-destacado">
+          <!-- Se cargará dinámicamente -->
+        </section>
+
+        <!-- Grid de Noticias -->
+        <section class="news-grid-section">
+          <h2 class="section-title">Últimas Publicaciones</h2>
+
+          <div class="news-grid" id="news-grid">
+            <!-- Las noticias se cargarán dinámicamente -->
+          </div>
+        </section>
+
+        <!-- Newsletter Subscription -->
+        <section class="newsletter-section">
+          <div class="newsletter-container">
+            <div class="newsletter-content">
+              <h3>📧 Suscríbete a Nuestro Newsletter</h3>
+              <p>
+                Recibe las últimas noticias y tendencias de desarrollo web
+                directamente en tu email
+              </p>
+
+              <form class="newsletter-form" id="newsletterForm">
+                <input
+                  type="email"
+                  placeholder="Tu correo electrónico"
+                  id="newsletter-email"
+                  required
+                />
+                <button type="submit" class="btn-newsletter">
+                  Suscribirse
+                </button>
+              </form>
+
+              <p class="newsletter-privacy">
+                🔒 Respetamos tu privacidad. Sin spam.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recursos Adicionales -->
+        <section class="resources-section">
+          <h2 class="section-title">Recursos Recomendados</h2>
+
+          <div class="resources-grid">
+            <div class="resource-card">
+              <div class="resource-icon">📚</div>
+              <h4>Documentación Web</h4>
+              <p>
+                MDN Web Docs, W3Schools, y más recursos para desarrolladores
+              </p>
+              <a
+                href="https://developer.mozilla.org/"
+                target="_blank"
+                class="resource-link"
+              >
+                Explorar →
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon">🎓</div>
+              <h4>Cursos Online</h4>
+              <p>
+                Aprende desarrollo web con cursos de Udemy, Platzi y Coursera
+              </p>
+              <a
+                href="https://www.udemy.com/"
+                target="_blank"
+                class="resource-link"
+              >
+                Ver Cursos →
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon">🛠️</div>
+              <h4>Herramientas</h4>
+              <p>Las mejores herramientas para diseño y desarrollo web</p>
+              <a
+                href="https://www.figma.com/"
+                target="_blank"
+                class="resource-link"
+              >
+                Descubrir →
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon">💡</div>
+              <h4>Inspiración</h4>
+              <p>Galería de diseños web inspiradores de Awwwards y Dribbble</p>
+              <a
+                href="https://www.awwwards.com/"
+                target="_blank"
+                class="resource-link"
+              >
+                Inspirarse →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="cta-section">
+          <div class="cta-content">
+            <h3>¿Tienes un proyecto en mente?</h3>
+            <p>Convierte tus ideas en realidad con nuestro equipo experto</p>
+            <a href="contact.html" class="btn-cta">Iniciar Proyecto</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; Kevin López - 2026 KevWeb! - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/db-connection.js"></script>
+    <script>
+      $(document).ready(function () {
+        cargarArticuloDestacado();
+        cargarNoticias("all");
+        configurarFiltros();
+        configurarNewsletter();
+        animarEntrada();
+      });
+
+      // Cargar artículo destacado (el más reciente)
+      function cargarArticuloDestacado() {
+        const noticias = obtenerNoticias();
+
+        if (noticias.length === 0) {
+          $("#articulo-destacado").html(
+            '<p class="no-news">No hay artículos disponibles</p>',
+          );
+          return;
+        }
+
+        // Ordenar por fecha (más reciente primero)
+        noticias.sort(
+          (a, b) =>
+            new Date(b.fecha_publicacion) - new Date(a.fecha_publicacion),
+        );
+        const destacado = noticias[0];
+
+        const fecha = formatearFecha(destacado.fecha_publicacion);
+
+        const html = `
+          <div class="featured-article-content">
+            <div class="featured-badge-news">⭐ DESTACADO</div>
+            
+            <div class="featured-news-info">
+              <div class="news-meta">
+                <span class="news-category">${destacado.categoria_blog}</span>
+                <span class="news-date">📅 ${fecha}</span>
+              </div>
+              
+              <h2 class="featured-news-title">${destacado.titulo}</h2>
+              
+              <p class="featured-news-excerpt">${destacado.contenido.substring(0, 250)}...</p>
+              
+              <div class="featured-news-footer">
+                <div class="author-info">
+                  <span class="author-icon">✍️</span>
+                  <span class="author-name">Por ${destacado.autor}</span>
+                </div>
+                
+                <a href="${destacado.imagen_url}" target="_blank" class="btn-read-more">
+                  Leer Artículo Completo →
+                </a>
+              </div>
+            </div>
+            
+            <div class="featured-news-visual">
+              <div class="visual-decoration">
+                <span class="deco-icon">📰</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        $("#articulo-destacado").html(html);
+      }
+
+      // Cargar noticias según categoría
+      function cargarNoticias(categoria) {
+        let noticias = obtenerNoticias();
+
+        if (categoria !== "all") {
+          noticias = noticias.filter(
+            (noticia) => noticia.categoria_blog === categoria,
+          );
+        }
+
+        if (noticias.length === 0) {
+          $("#news-grid").html(`
+            <div class="no-news-grid">
+              <p>No hay noticias en esta categoría</p>
+            </div>
+          `);
+          return;
+        }
+
+        // Ordenar por fecha
+        noticias.sort(
+          (a, b) =>
+            new Date(b.fecha_publicacion) - new Date(a.fecha_publicacion),
+        );
+
+        let html = "";
+
+        noticias.forEach((noticia, index) => {
+          const fecha = formatearFecha(noticia.fecha_publicacion);
+          const excerpt = noticia.contenido.substring(0, 150);
+
+          html += `
+            <article class="news-card" data-index="${index}">
+              <div class="news-card-header">
+                <span class="news-card-category">${noticia.categoria_blog}</span>
+                <span class="news-card-date">${fecha}</span>
+              </div>
+              
+              <div class="news-card-body">
+                <h3 class="news-card-title">${noticia.titulo}</h3>
+                <p class="news-card-excerpt">${excerpt}...</p>
+              </div>
+              
+              <div class="news-card-footer">
+                <div class="news-author">
+                  <span class="author-avatar">👤</span>
+                  <span class="author-text">${noticia.autor}</span>
+                </div>
+                
+                <a href="${noticia.imagen_url}" target="_blank" class="news-link">
+                  Leer más →
+                </a>
+              </div>
+            </article>
+          `;
+        });
+
+        $("#news-grid").html(html);
+
+        // Animación de entrada
+        $(".news-card").each(function (index) {
+          $(this)
+            .css({
+              opacity: "0",
+              transform: "translateY(30px)",
+            })
+            .delay(index * 100)
+            .animate(
+              {
+                opacity: 1,
+              },
+              600,
+              function () {
+                $(this).css("transform", "translateY(0)");
+              },
+            );
+        });
+      }
+
+      // Configurar filtros
+      function configurarFiltros() {
+        $(".filter-btn").on("click", function () {
+          $(".filter-btn").removeClass("active");
+          $(this).addClass("active");
+
+          const categoria = $(this).data("categoria");
+          cargarNoticias(categoria);
+        });
+      }
+
+      // Formatear fecha
+      function formatearFecha(fechaStr) {
+        const fecha = new Date(fechaStr);
+        const opciones = { year: "numeric", month: "long", day: "numeric" };
+        return fecha.toLocaleDateString("es-ES", opciones);
+      }
+
+      // Configurar Newsletter
+      function configurarNewsletter() {
+        $("#newsletterForm").on("submit", function (e) {
+          e.preventDefault();
+
+          const email = $("#newsletter-email").val().trim();
+
+          if (!email) {
+            alert("Por favor ingresa tu email");
+            return;
+          }
+
+          // Validar email
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            alert("Por favor ingresa un email válido");
+            return;
+          }
+
+          // Simular suscripción
+          const $btn = $(".btn-newsletter");
+          const textoOriginal = $btn.text();
+
+          $btn.prop("disabled", true).text("Suscribiendo...");
+
+          setTimeout(function () {
+            alert(
+              "✅ ¡Gracias por suscribirte! Recibirás nuestras últimas noticias.",
+            );
+            $("#newsletter-email").val("");
+            $btn.prop("disabled", false).text(textoOriginal);
+          }, 1500);
+        });
+      }
+
+      // Animación de entrada
+      function animarEntrada() {
+        $(".featured-article-content")
+          .css({
+            opacity: "0",
+            transform: "scale(0.95)",
+          })
+          .animate(
+            {
+              opacity: 1,
+            },
+            800,
+            function () {
+              $(this).css("transform", "scale(1)");
+            },
+          );
+
+        $(".resource-card").each(function (index) {
+          $(this)
+            .css({
+              opacity: "0",
+              transform: "translateY(30px)",
+            })
+            .delay(index * 150)
+            .animate(
+              {
+                opacity: 1,
+              },
+              600,
+              function () {
+                $(this).css("transform", "translateY(0)");
+              },
+            );
+        });
+
+        $(".newsletter-container")
+          .css({
+            opacity: "0",
+            transform: "translateY(30px)",
+          })
+          .delay(500)
+          .animate(
+            {
+              opacity: 1,
+            },
+            800,
+            function () {
+              $(this).css("transform", "translateY(0)");
+            },
+          );
+      }
+    </script>
+  </body>
+</html>
