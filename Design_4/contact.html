@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacto - KevWeb!</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
     <!--Conexión con Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- jQuery -->
+    <!-- jQuery con Cloudflare -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
@@ -44,22 +43,17 @@
 
     <div class="container-main">
       <main class="main-content">
-        <!-- Hero Section -->
         <section class="contact-hero">
           <h2 class="page-title">Contáctanos</h2>
-          <p class="subtitle">
-            Estamos listos para hacer realidad tu proyecto digital
-          </p>
+          <p class="subtitle">Contáctanos aquí.</p>
         </section>
 
-        <!-- Contenedor Principal -->
         <div class="contact-container">
-          <!-- Información de Contacto -->
           <aside class="contact-info">
             <h3>Información de Contacto</h3>
 
             <div class="info-item-contact">
-              <div class="info-icon-contact">📍</div>
+              <div class="info-icon-contact"></div>
               <div class="info-text-contact">
                 <strong>Dirección</strong>
                 <p id="direccion-contacto">Quito, Pichincha, Ecuador</p>
@@ -67,7 +61,7 @@
             </div>
 
             <div class="info-item-contact">
-              <div class="info-icon-contact">📞</div>
+              <div class="info-icon-contact"></div>
               <div class="info-text-contact">
                 <strong>Teléfono</strong>
                 <p id="telefono-contacto">+593-99-123-4567</p>
@@ -75,7 +69,7 @@
             </div>
 
             <div class="info-item-contact">
-              <div class="info-icon-contact">✉️</div>
+              <div class="info-icon-contact"></div>
               <div class="info-text-contact">
                 <strong>Email</strong>
                 <p id="email-contacto">contacto@kevweb.com</p>
@@ -83,25 +77,14 @@
             </div>
 
             <div class="info-item-contact">
-              <div class="info-icon-contact">🕒</div>
+              <div class="info-icon-contact"></div>
               <div class="info-text-contact">
                 <strong>Horario</strong>
                 <p id="horario-contacto">Lunes a Viernes: 9:00 AM - 6:00 PM</p>
               </div>
             </div>
-
-            <div class="social-links">
-              <h4>Síguenos en:</h4>
-              <div class="social-icons">
-                <a href="#" class="social-icon" title="Facebook">📘</a>
-                <a href="#" class="social-icon" title="Instagram">📷</a>
-                <a href="#" class="social-icon" title="LinkedIn">💼</a>
-                <a href="#" class="social-icon" title="Twitter">🐦</a>
-              </div>
-            </div>
           </aside>
 
-          <!-- Formulario de Contacto -->
           <section class="contact-form-section">
             <h3>Envíanos un Mensaje</h3>
             <p class="form-description">
@@ -110,7 +93,6 @@
             </p>
 
             <form id="contactForm" class="contact-form" novalidate>
-              <!-- Nombre -->
               <div class="form-group">
                 <label for="nombre">Nombre Completo *</label>
                 <input
@@ -122,8 +104,6 @@
                 />
                 <span class="error-message" id="error-nombre"></span>
               </div>
-
-              <!-- Email -->
               <div class="form-group">
                 <label for="email">Correo Electrónico *</label>
                 <input
@@ -135,8 +115,6 @@
                 />
                 <span class="error-message" id="error-email"></span>
               </div>
-
-              <!-- Teléfono -->
               <div class="form-group">
                 <label for="telefono">Teléfono</label>
                 <input
@@ -148,7 +126,6 @@
                 <span class="error-message" id="error-telefono"></span>
               </div>
 
-              <!-- Servicio de Interés -->
               <div class="form-group">
                 <label for="servicio">Servicio de Interés</label>
                 <select id="servicio" name="servicio">
@@ -157,7 +134,6 @@
                 </select>
               </div>
 
-              <!-- Mensaje -->
               <div class="form-group">
                 <label for="mensaje">Mensaje *</label>
                 <textarea
@@ -170,20 +146,18 @@
                 <span class="error-message" id="error-mensaje"></span>
               </div>
 
-              <!-- Botones -->
               <div class="form-actions">
                 <button type="submit" class="btn-submit" id="btnEnviar">
                   <span class="btn-text">Enviar Mensaje</span>
                   <span class="btn-loader" style="display: none"
-                    >⏳ Enviando...</span
-                  >
+                    >Enviando...
+                  </span>
                 </button>
                 <button type="reset" class="btn-reset">
                   Limpiar Formulario
                 </button>
               </div>
 
-              <!-- Mensaje de éxito/error -->
               <div
                 class="form-message"
                 id="formMessage"
@@ -192,47 +166,6 @@
             </form>
           </section>
         </div>
-
-        <!-- Sección de Preguntas Frecuentes -->
-        <section class="faq-section">
-          <h2 class="section-title">Preguntas Frecuentes</h2>
-
-          <div class="faq-grid">
-            <div class="faq-item">
-              <h4>⏱️ ¿Cuánto tiempo toma desarrollar un sitio web?</h4>
-              <p>
-                Dependiendo de la complejidad, un sitio básico toma de 1-2
-                semanas, mientras que proyectos más complejos pueden requerir
-                4-8 semanas.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h4>💰 ¿Cómo son los métodos de pago?</h4>
-              <p>
-                Aceptamos pagos en efectivo, transferencia bancaria y tarjetas
-                de crédito. Trabajamos con un esquema de pagos parciales: 50% al
-                inicio y 50% al finalizar.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h4>🔧 ¿Ofrecen soporte después de la entrega?</h4>
-              <p>
-                Sí, incluimos 30 días de soporte gratuito. Después puedes
-                contratar nuestro plan de mantenimiento mensual.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h4>📱 ¿Los sitios son responsive?</h4>
-              <p>
-                Todos nuestros sitios web están optimizados para verse
-                perfectamente en computadoras, tablets y móviles.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
 
@@ -243,9 +176,9 @@
     <!-- JavaScript -->
     <script src="js/db-connection.js"></script>
     <script>
-      $(document).ready(function () {
-        cargarInfoContacto();
-        cargarServiciosSelect();
+      $(document).ready(async function () {
+        await cargarInfoContacto();
+        await cargarServiciosSelect();
         verificarServicioURL();
         configurarValidaciones();
 
@@ -254,27 +187,35 @@
       });
 
       // Cargar información de contacto
-      function cargarInfoContacto() {
-        const empresa = obtenerDatosEmpresa();
+      async function cargarInfoContacto() {
+        try {
+          const empresa = await obtenerDatosEmpresa();
 
-        if (empresa) {
-          $("#direccion-contacto").text(empresa.direccion);
-          $("#telefono-contacto").text(empresa.telefono);
-          $("#email-contacto").text(empresa.email);
-          $("#horario-contacto").text(empresa.horario_atencion);
+          if (empresa) {
+            $("#direccion-contacto").text(empresa.direccion);
+            $("#telefono-contacto").text(empresa.telefono);
+            $("#email-contacto").text(empresa.email);
+            $("#horario-contacto").text(empresa.horario_atencion);
+          }
+        } catch (error) {
+          console.error("Error:", error);
         }
       }
 
       // Cargar servicios en el select
-      function cargarServiciosSelect() {
-        const servicios = obtenerServicios();
-        let options = '<option value="">Selecciona un servicio</option>';
+      async function cargarServiciosSelect() {
+        try {
+          const servicios = await obtenerServicios();
+          let options = '<option value="">Selecciona un servicio</option>';
 
-        servicios.forEach((servicio) => {
-          options += `<option value="${servicio.nombre}">${servicio.nombre}</option>`;
-        });
+          servicios.forEach((servicio) => {
+            options += `<option value="${servicio.nombre}">${servicio.nombre}</option>`;
+          });
 
-        $("#servicio").html(options);
+          $("#servicio").html(options);
+        } catch (error) {
+          console.error("Error:", error);
+        }
       }
 
       // Verificar si viene de una oferta (URL parameter)
@@ -435,7 +376,7 @@
         ) {
           mostrarMensajeFormulario(
             "error",
-            "❌ Por favor corrige los errores en el formulario",
+            "Por favor corrige los errores en el formulario",
           );
           return;
         }
@@ -463,7 +404,7 @@
           if (guardado) {
             mostrarMensajeFormulario(
               "success",
-              "✅ ¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.",
+              "¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.",
             );
             $("#contactForm")[0].reset();
 
@@ -477,7 +418,7 @@
           } else {
             mostrarMensajeFormulario(
               "error",
-              "❌ Hubo un error al enviar el mensaje. Por favor intenta nuevamente.",
+              "Hubo un error al enviar el mensaje. Por favor intenta nuevamente.",
             );
           }
 
@@ -537,5 +478,6 @@
         });
       }
     </script>
+    <script src="js/db-connection.js"></script>
   </body>
 </html>

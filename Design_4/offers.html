@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oferta del Mes - KevWeb!</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
     <!--Conexión con Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- jQuery -->
+    <!-- jQuery con Cloudflare -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
@@ -44,7 +43,6 @@
 
     <div class="container-main">
       <main class="main-content">
-        <!-- Banner de Oferta Principal -->
         <section class="offer-hero">
           <div class="offer-badge-hero">
             <span class="badge-text">¡OFERTA ESPECIAL!</span>
@@ -54,46 +52,13 @@
           <p class="subtitle">Aprovecha nuestros descuentos especiales</p>
         </section>
 
-        <!-- Oferta Destacada Principal -->
-        <section class="featured-offer" id="oferta-principal">
-          <!-- Se cargará dinámicamente -->
-        </section>
+        <section class="featured-offer" id="oferta-principal"></section>
 
-        <!-- Todas las Ofertas Disponibles -->
         <section class="all-offers">
           <h2 class="section-title">Todas Nuestras Ofertas</h2>
-          <div class="offers-grid" id="ofertas-grid">
-            <!-- Se cargarán dinámicamente -->
-          </div>
+          <div class="offers-grid" id="ofertas-grid"></div>
         </section>
 
-        <!-- Contador de Tiempo -->
-        <section class="countdown-section">
-          <div class="countdown-container">
-            <h3>⏰ ¡Las ofertas terminan pronto!</h3>
-            <p>Aprovecha estos descuentos antes de que finalice el mes</p>
-            <div class="countdown" id="countdown">
-              <div class="countdown-item">
-                <span class="countdown-value" id="days">00</span>
-                <span class="countdown-label">Días</span>
-              </div>
-              <div class="countdown-item">
-                <span class="countdown-value" id="hours">00</span>
-                <span class="countdown-label">Horas</span>
-              </div>
-              <div class="countdown-item">
-                <span class="countdown-value" id="minutes">00</span>
-                <span class="countdown-label">Minutos</span>
-              </div>
-              <div class="countdown-item">
-                <span class="countdown-value" id="seconds">00</span>
-                <span class="countdown-label">Segundos</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- CTA Final -->
         <section class="cta-section">
           <div class="cta-content">
             <h3>¿Listo para empezar tu proyecto?</h3>
@@ -127,7 +92,7 @@
         if (ofertas.length === 0) {
           $("#oferta-principal").html(`
             <div class="no-offers">
-              <p>😔 No hay ofertas disponibles en este momento</p>
+              <p>No hay ofertas disponibles en este momento</p>
               <a href="services.html" class="btn-servicios">Ver Todos los Servicios</a>
             </div>
           `);
@@ -158,7 +123,7 @@
               
               <div class="featured-details">
                 <div class="detail-box">
-                  <span class="detail-icon">⏱️</span>
+                  <span class="detail-icon"></span>
                   <div class="detail-text">
                     <strong>Duración</strong>
                     <span>${ofertaPrincipal.duracion_estimada}</span>
@@ -166,7 +131,7 @@
                 </div>
                 
                 <div class="detail-box">
-                  <span class="detail-icon">💻</span>
+                  <span class="detail-icon"></span>
                   <div class="detail-text">
                     <strong>Tecnologías</strong>
                     <span>${ofertaPrincipal.tecnologias}</span>
@@ -186,7 +151,7 @@
                   </div>
                 </div>
                 <div class="savings">
-                  <span class="savings-icon">💰</span>
+                  <span class="savings-icon"></span>
                   <span>¡Ahorras $${ahorro.toFixed(2)}!</span>
                 </div>
               </div>
@@ -199,7 +164,7 @@
             
             <div class="featured-visual">
               <div class="visual-circle">
-                <span class="visual-icon">🌐</span>
+                <span class="visual-icon"></span>
               </div>
               <div class="visual-text">
                 <p class="highlight">¡OFERTA LIMITADA!</p>
@@ -238,7 +203,7 @@
               <div class="offer-badge">${oferta.descuento_oferta}% OFF</div>
               
               <div class="offer-image">
-                <span class="offer-icon">🎯</span>
+                <span class="offer-icon"></span>
               </div>
               
               <div class="offer-content">
@@ -247,11 +212,11 @@
                 
                 <div class="offer-specs">
                   <div class="spec-item">
-                    <span>⏱️</span>
+                    <span>⏱</span>
                     <span>${oferta.duracion_estimada}</span>
                   </div>
                   <div class="spec-item">
-                    <span>💻</span>
+                    <span></span>
                     <span>${oferta.tecnologias}</span>
                   </div>
                 </div>
@@ -363,5 +328,6 @@
         });
       }
     </script>
+    <script src="js/db-connection.js"></script>
   </body>
 </html>

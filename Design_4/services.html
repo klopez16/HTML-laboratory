@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Servicios - KevWeb!</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
     <!--Conexión con Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- jQuery -->
+    <!-- jQuery con Cloudflare -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
@@ -44,32 +43,24 @@
 
     <div class="container-main">
       <main class="main-content">
-        <!-- Hero Section -->
         <section class="services-hero">
           <h2 class="page-title">Nuestros Servicios</h2>
           <p class="subtitle">Soluciones digitales a tu medida</p>
         </section>
 
-        <!-- Filtros por Categoría -->
         <section class="services-filters">
           <div class="filters-container">
             <button class="filter-btn active" data-categoria="all">
               Todos los Servicios
             </button>
-            <div id="categorias-filtro">
-              <!-- Categorías se cargarán dinámicamente -->
-            </div>
+            <div id="categorias-filtro"></div>
           </div>
         </section>
 
-        <!-- Catálogo de Servicios -->
         <section class="services-catalog">
-          <div class="catalog-grid" id="servicios-grid">
-            <!-- Los servicios se cargarán aquí dinámicamente -->
-          </div>
+          <div class="catalog-grid" id="servicios-grid"></div>
         </section>
 
-        <!-- Sección de Llamado a la Acción -->
         <section class="cta-section">
           <div class="cta-content">
             <h3>¿No encuentras lo que buscas?</h3>
@@ -86,61 +77,160 @@
       <p>&copy; Kevin López - 2026 KevWeb! - Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/db-connection.js"></script>
     <script>
-      $(document).ready(function () {
-        cargarCategoriasFiltro();
-        cargarServicios("all");
+      $(document).ready(async function () {
+        await cargarCategoriasFiltro();
+        await cargarServicios("all");
 
         // Event listener para filtros
-        $(document).on("click", ".filter-btn", function () {
+        $(document).on("click", ".filter-btn", async function () {
           $(".filter-btn").removeClass("active");
           $(this).addClass("active");
 
           const categoria = $(this).data("categoria");
-          cargarServicios(categoria);
+          await cargarServicios(categoria);
         });
       });
 
       // Cargar categorías en los filtros
-      function cargarCategoriasFiltro() {
-        const categorias = obtenerCategorias();
-        let html = "";
+      async function cargarCategoriasFiltro() {
+        try {
+          const categorias = await obtenerCategorias();
+          let html = "";
 
-        categorias.forEach((cat) => {
-          html += `
-            <button class="filter-btn" data-categoria="${cat.id_categoria}">
-              ${cat.nombre_categoria}
-            </button>
-          `;
-        });
+          categorias.forEach((cat) => {
+            html += `
+          <button class="filter-btn" data-categoria="${cat.id_categoria}">
+            ${cat.nombre_categoria}
+          </button>
+        `;
+          });
 
-        $("#categorias-filtro").html(html);
+          $("#categorias-filtro").html(html);
+        } catch (error) {
+          console.error("Error al cargar categorías:", error);
+        }
       }
 
       // Cargar servicios según categoría
-      function cargarServicios(categoriaId) {
-        let servicios;
+      async function cargarServicios(categoriaId) {
+        try {
+          let servicios;
 
-        if (categoriaId === "all") {
-          servicios = obtenerServicios();
-        } else {
-          servicios = obtenerServiciosPorCategoria(parseInt(categoriaId));
-        }
+          if (categoriaId === "all") {
+            servicios = await obtenerServicios();
+          } else {
+            servicios = await obtenerServiciosPorCategoria(
+              parseInt(categoriaId),
+            );
+          }
 
-        if (servicios.length === 0) {
-          $("#servicios-grid").html(`
-            <div class="no-services">
-              <p>No hay servicios disponibles en esta categoría</p>
+          if (servicios.length === 0) {
+            $("#servicios-grid").html(`
+          <div class="no-services">
+            <p>No hay servicios disponibles en esta categoría</p>
+          </div>
+        `);
+            return;
+          }
+
+          let html = "";
+
+          servicios.forEach((servicio) => {
+            const precioFinal = servicio.es_oferta
+              ? calcularPrecioConDescuento(
+                  servicio.precio_desde,
+                  servicio.descuento_oferta,
+                )
+              : servicio.precio_desde;
+
+            const badgeOferta = servicio.es_oferta
+              ? `<span class="badge-oferta">-${servicio.descuento_oferta}%</span>`
+              : "";
+
+            const precioOriginal = servicio.es_oferta
+              ? `<span class="precio-original">$${servicio.precio_desde.toFixed(2)}</span>`
+              : "";
+
+            html += `
+          <div class="service-card" data-servicio="${servicio.id_servicios}">
+            ${badgeOferta}
+            <div class="service-image">
+              <div class="image-placeholder">
+                <span class="icon-placeholder"></span>
+              </div>
             </div>
-          `);
-          return;
+            
+            <div class="service-content">
+              <h3 class="service-title">${servicio.nombre}</h3>
+              <p class="service-description">${servicio.descripcion}</p>
+              
+              <div class="service-details">
+                <div class="detail-item">
+                  <span class="detail-icon"></span>
+                  <span>${servicio.duracion_estimada}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon"></span>
+                  <span>${servicio.tecnologias}</span>
+                </div>
+              </div>
+              
+              <div class="service-footer">
+                <div class="price-container">
+                  <span class="price-label">Desde</span>
+                  ${precioOriginal}
+                  <span class="price-value">$${precioFinal.toFixed(2)}</span>
+                </div>
+                <button class="btn-servicio" onclick="verDetalleServicio(${servicio.id_servicios})">
+                  Ver Detalles
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+          });
+
+          $("#servicios-grid").html(html);
+
+          // Animación de entrada
+          $(".service-card").each(function (index) {
+            $(this)
+              .css({
+                opacity: "0",
+                transform: "translateY(30px)",
+              })
+              .delay(index * 100)
+              .animate(
+                {
+                  opacity: 1,
+                },
+                500,
+                function () {
+                  $(this).css("transform", "translateY(0)");
+                },
+              );
+          });
+        } catch (error) {
+          console.error("Error al cargar servicios:", error);
+          $("#servicios-grid").html(`
+        <div class="no-services">
+          <p>Error al cargar servicios. Verifica la conexión.</p>
+        </div>
+      `);
         }
+      }
 
-        let html = "";
+      // Ver detalle de servicio
+      async function verDetalleServicio(servicioId) {
+        try {
+          const servicio = await obtenerServicioPorId(servicioId);
 
-        servicios.forEach((servicio) => {
+          if (!servicio) {
+            alert("Servicio no encontrado");
+            return;
+          }
+
           const precioFinal = servicio.es_oferta
             ? calcularPrecioConDescuento(
                 servicio.precio_desde,
@@ -148,142 +238,60 @@
               )
             : servicio.precio_desde;
 
-          const badgeOferta = servicio.es_oferta
-            ? `<span class="badge-oferta">-${servicio.descuento_oferta}%</span>`
-            : "";
-
-          const precioOriginal = servicio.es_oferta
-            ? `<span class="precio-original">$${servicio.precio_desde.toFixed(2)}</span>`
-            : "";
-
-          html += `
-            <div class="service-card" data-servicio="${servicio.id_servicio}">
-              ${badgeOferta}
-              <div class="service-image">
-                <div class="image-placeholder">
-                  <span class="icon-placeholder">🌐</span>
+          const modal = `
+        <div class="modal-overlay" id="modal-servicio">
+          <div class="modal-content">
+            <button class="modal-close" onclick="cerrarModal()">&times;</button>
+            
+            <h2>${servicio.nombre}</h2>
+            ${servicio.es_oferta ? `<span class="badge-oferta-modal">¡OFERTA ${servicio.descuento_oferta}% OFF!</span>` : ""}
+            
+            <div class="modal-body">
+              <p class="modal-description">${servicio.descripcion}</p>
+              
+              <div class="modal-info">
+                <div class="info-item">
+                  <strong>Duración estimada:</strong>
+                  <span>${servicio.duracion_estimada}</span>
+                </div>
+                
+                <div class="info-item">
+                  <strong>Tecnologías:</strong>
+                  <span>${servicio.tecnologias}</span>
+                </div>
+                
+                <div class="info-item">
+                  <strong>Precio:</strong>
+                  ${
+                    servicio.es_oferta
+                      ? `
+                    <span>
+                      <del>$${servicio.precio_desde.toFixed(2)}</del>
+                      <strong class="precio-oferta">$${precioFinal.toFixed(2)}</strong>
+                    </span>
+                  `
+                      : `
+                    <span>Desde $${servicio.precio_desde.toFixed(2)}</span>
+                  `
+                  }
                 </div>
               </div>
               
-              <div class="service-content">
-                <h3 class="service-title">${servicio.nombre}</h3>
-                <p class="service-description">${servicio.descripcion}</p>
-                
-                <div class="service-details">
-                  <div class="detail-item">
-                    <span class="detail-icon">⏱️</span>
-                    <span>${servicio.duracion_estimada}</span>
-                  </div>
-                  <div class="detail-item">
-                    <span class="detail-icon">💻</span>
-                    <span>${servicio.tecnologias}</span>
-                  </div>
-                </div>
-                
-                <div class="service-footer">
-                  <div class="price-container">
-                    <span class="price-label">Desde</span>
-                    ${precioOriginal}
-                    <span class="price-value">$${precioFinal.toFixed(2)}</span>
-                  </div>
-                  <button class="btn-servicio" onclick="verDetalleServicio(${servicio.id_servicio})">
-                    Ver Detalles
-                  </button>
-                </div>
-              </div>
-            </div>
-          `;
-        });
-
-        $("#servicios-grid").html(html);
-
-        // Animación de entrada
-        $(".service-card").each(function (index) {
-          $(this)
-            .css({
-              opacity: "0",
-              transform: "translateY(30px)",
-            })
-            .delay(index * 100)
-            .animate(
-              {
-                opacity: 1,
-              },
-              500,
-              function () {
-                $(this).css("transform", "translateY(0)");
-              },
-            );
-        });
-      }
-
-      // Ver detalle de servicio
-      function verDetalleServicio(servicioId) {
-        const servicio = obtenerServicioPorId(servicioId);
-
-        if (!servicio) {
-          alert("Servicio no encontrado");
-          return;
-        }
-
-        // Crear modal con información detallada
-        const precioFinal = servicio.es_oferta
-          ? calcularPrecioConDescuento(
-              servicio.precio_desde,
-              servicio.descuento_oferta,
-            )
-          : servicio.precio_desde;
-
-        const modal = `
-          <div class="modal-overlay" id="modal-servicio">
-            <div class="modal-content">
-              <button class="modal-close" onclick="cerrarModal()">&times;</button>
-              
-              <h2>${servicio.nombre}</h2>
-              ${servicio.es_oferta ? `<span class="badge-oferta-modal">¡OFERTA ${servicio.descuento_oferta}% OFF!</span>` : ""}
-              
-              <div class="modal-body">
-                <p class="modal-description">${servicio.descripcion}</p>
-                
-                <div class="modal-info">
-                  <div class="info-item">
-                    <strong>⏱️ Duración estimada:</strong>
-                    <span>${servicio.duracion_estimada}</span>
-                  </div>
-                  
-                  <div class="info-item">
-                    <strong>💻 Tecnologías:</strong>
-                    <span>${servicio.tecnologias}</span>
-                  </div>
-                  
-                  <div class="info-item">
-                    <strong>💰 Precio:</strong>
-                    ${
-                      servicio.es_oferta
-                        ? `
-                      <span>
-                        <del>$${servicio.precio_desde.toFixed(2)}</del>
-                        <strong class="precio-oferta">$${precioFinal.toFixed(2)}</strong>
-                      </span>
-                    `
-                        : `
-                      <span>Desde $${servicio.precio_desde.toFixed(2)}</span>
-                    `
-                    }
-                  </div>
-                </div>
-                
-                <div class="modal-actions">
-                  <a href="contact.html" class="btn-modal-primary">Solicitar Cotización</a>
-                  <button onclick="cerrarModal()" class="btn-modal-secondary">Cerrar</button>
-                </div>
+              <div class="modal-actions">
+                <a href="contact.html" class="btn-modal-primary">Solicitar Cotización</a>
+                <button onclick="cerrarModal()" class="btn-modal-secondary">Cerrar</button>
               </div>
             </div>
           </div>
-        `;
+        </div>
+      `;
 
-        $("body").append(modal);
-        $("#modal-servicio").fadeIn(300);
+          $("body").append(modal);
+          $("#modal-servicio").fadeIn(300);
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Error al cargar detalles del servicio");
+        }
       }
 
       // Cerrar modal
@@ -300,5 +308,6 @@
         }
       });
     </script>
+    <script src="js/db-connection.js"></script>
   </body>
 </html>

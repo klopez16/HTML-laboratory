@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noticias - KevWeb!</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
     <!--Conexión con Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- jQuery -->
+    <!-- jQuery con Cloudflare -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
@@ -52,131 +51,14 @@
           </p>
         </section>
 
-        <!-- Filtros por Categoría -->
-        <section class="news-filters">
-          <div class="filters-container">
-            <button class="filter-btn active" data-categoria="all">
-              📚 Todas las Noticias
-            </button>
-            <button class="filter-btn" data-categoria="Diseño Web">
-              🎨 Diseño Web
-            </button>
-            <button class="filter-btn" data-categoria="Design Trends">
-              📈 Tendencias
-            </button>
-            <button class="filter-btn" data-categoria="Elementos Esenciales">
-              ⚙️ Elementos Esenciales
-            </button>
-          </div>
-        </section>
+        <section class="featured-article" id="articulo-destacado"></section>
 
-        <!-- Artículo Destacado -->
-        <section class="featured-article" id="articulo-destacado">
-          <!-- Se cargará dinámicamente -->
-        </section>
-
-        <!-- Grid de Noticias -->
         <section class="news-grid-section">
           <h2 class="section-title">Últimas Publicaciones</h2>
 
-          <div class="news-grid" id="news-grid">
-            <!-- Las noticias se cargarán dinámicamente -->
-          </div>
+          <div class="news-grid" id="news-grid"></div>
         </section>
 
-        <!-- Newsletter Subscription -->
-        <section class="newsletter-section">
-          <div class="newsletter-container">
-            <div class="newsletter-content">
-              <h3>📧 Suscríbete a Nuestro Newsletter</h3>
-              <p>
-                Recibe las últimas noticias y tendencias de desarrollo web
-                directamente en tu email
-              </p>
-
-              <form class="newsletter-form" id="newsletterForm">
-                <input
-                  type="email"
-                  placeholder="Tu correo electrónico"
-                  id="newsletter-email"
-                  required
-                />
-                <button type="submit" class="btn-newsletter">
-                  Suscribirse
-                </button>
-              </form>
-
-              <p class="newsletter-privacy">
-                🔒 Respetamos tu privacidad. Sin spam.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Recursos Adicionales -->
-        <section class="resources-section">
-          <h2 class="section-title">Recursos Recomendados</h2>
-
-          <div class="resources-grid">
-            <div class="resource-card">
-              <div class="resource-icon">📚</div>
-              <h4>Documentación Web</h4>
-              <p>
-                MDN Web Docs, W3Schools, y más recursos para desarrolladores
-              </p>
-              <a
-                href="https://developer.mozilla.org/"
-                target="_blank"
-                class="resource-link"
-              >
-                Explorar →
-              </a>
-            </div>
-
-            <div class="resource-card">
-              <div class="resource-icon">🎓</div>
-              <h4>Cursos Online</h4>
-              <p>
-                Aprende desarrollo web con cursos de Udemy, Platzi y Coursera
-              </p>
-              <a
-                href="https://www.udemy.com/"
-                target="_blank"
-                class="resource-link"
-              >
-                Ver Cursos →
-              </a>
-            </div>
-
-            <div class="resource-card">
-              <div class="resource-icon">🛠️</div>
-              <h4>Herramientas</h4>
-              <p>Las mejores herramientas para diseño y desarrollo web</p>
-              <a
-                href="https://www.figma.com/"
-                target="_blank"
-                class="resource-link"
-              >
-                Descubrir →
-              </a>
-            </div>
-
-            <div class="resource-card">
-              <div class="resource-icon">💡</div>
-              <h4>Inspiración</h4>
-              <p>Galería de diseños web inspiradores de Awwwards y Dribbble</p>
-              <a
-                href="https://www.awwwards.com/"
-                target="_blank"
-                class="resource-link"
-              >
-                Inspirarse →
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <!-- CTA Final -->
         <section class="cta-section">
           <div class="cta-content">
             <h3>¿Tienes un proyecto en mente?</h3>
@@ -443,5 +325,6 @@
           );
       }
     </script>
+    <script src="js/db-connection.js"></script>
   </body>
 </html>

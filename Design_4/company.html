@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Empresa - KevWeb!</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
     <!--Conexión con Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <!-- jQuery -->
+    <!-- jQuery con Cloudflare -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
@@ -44,13 +43,11 @@
 
     <div class="container-main">
       <main class="main-content">
-        <!-- Sección Hero de Empresa -->
         <section class="company-hero">
           <h2 class="page-title">Sobre KevWeb</h2>
           <p class="subtitle">Transformamos ideas en experiencias digitales</p>
         </section>
 
-        <!-- Información de la Empresa -->
         <section class="company-info">
           <div class="info-card">
             <h3>¿Quiénes Somos?</h3>
@@ -59,76 +56,45 @@
 
           <div class="info-grid">
             <div class="info-card">
-              <div class="icon-header">🎯</div>
+              <div class="icon-header"></div>
               <h3>Nuestra Misión</h3>
               <p id="mision-empresa">Cargando...</p>
             </div>
 
             <div class="info-card">
-              <div class="icon-header">🚀</div>
+              <div class="icon-header"></div>
               <h3>Nuestra Visión</h3>
               <p id="vision-empresa">Cargando...</p>
             </div>
           </div>
         </section>
 
-        <!-- Servicios y Horarios -->
         <section class="company-services">
           <h2 class="section-title">Servicios y Atención</h2>
 
           <div class="services-grid">
             <div class="service-item">
-              <div class="service-icon">🕒</div>
+              <div class="service-icon"></div>
               <h4>Horario de Atención</h4>
               <p id="horario-atencion">Lunes a Viernes: 9:00 AM - 6:00 PM</p>
             </div>
 
             <div class="service-item">
-              <div class="service-icon">📞</div>
+              <div class="service-icon"></div>
               <h4>Teléfono</h4>
               <p id="telefono-empresa">+593-99-123-4567</p>
             </div>
 
             <div class="service-item">
-              <div class="service-icon">✉️</div>
+              <div class="service-icon"></div>
               <h4>Email</h4>
               <p id="email-empresa">contacto@kevweb.com</p>
             </div>
 
             <div class="service-item">
-              <div class="service-icon">📍</div>
+              <div class="service-icon"></div>
               <h4>Ubicación</h4>
               <p id="direccion-empresa">Quito, Pichincha, Ecuador</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Nuestros Valores -->
-        <section class="company-values">
-          <h2 class="section-title">Nuestros Valores</h2>
-          <div class="values-grid">
-            <div class="value-card">
-              <div class="value-icon">💡</div>
-              <h4>Innovación</h4>
-              <p>Siempre buscamos las mejores soluciones tecnológicas</p>
-            </div>
-
-            <div class="value-card">
-              <div class="value-icon">🤝</div>
-              <h4>Compromiso</h4>
-              <p>Dedicados al éxito de cada proyecto</p>
-            </div>
-
-            <div class="value-card">
-              <div class="value-icon">⭐</div>
-              <h4>Calidad</h4>
-              <p>Excelencia en cada línea de código</p>
-            </div>
-
-            <div class="value-card">
-              <div class="value-icon">🎓</div>
-              <h4>Aprendizaje</h4>
-              <p>Actualización constante en tecnologías</p>
             </div>
           </div>
         </section>
@@ -139,12 +105,10 @@
       <p>&copy; Kevin López - 2026 KevWeb! - Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/db-connection.js"></script>
     <script>
       // Cargar información de la empresa desde la BD
-      $(document).ready(function () {
-        cargarInfoEmpresa();
+      $(document).ready(async function () {
+        await cargarInfoEmpresa();
 
         // Animación de entrada
         $(".info-card, .service-item, .value-card").each(function (index) {
@@ -167,21 +131,26 @@
       });
 
       // Función para cargar información de empresa
-      function cargarInfoEmpresa() {
-        // Aquí se conectará con la BD
-        // Por ahora usamos datos de ejemplo
-        const empresaData = obtenerDatosEmpresa();
+      async function cargarInfoEmpresa() {
+        try {
+          const empresaData = await obtenerDatosEmpresa();
 
-        if (empresaData) {
-          $("#descripcion-empresa").text(empresaData.descripcion_empresa);
-          $("#mision-empresa").text(empresaData.mision);
-          $("#vision-empresa").text(empresaData.vision);
-          $("#horario-atencion").text(empresaData.horario_atencion);
-          $("#telefono-empresa").text(empresaData.telefono);
-          $("#email-empresa").text(empresaData.email);
-          $("#direccion-empresa").text(empresaData.direccion);
+          if (empresaData && empresaData.id_info) {
+            $("#descripcion-empresa").text(empresaData.descripcion_empresa);
+            $("#mision-empresa").text(empresaData.mision);
+            $("#vision-empresa").text(empresaData.vision);
+            $("#horario-atencion").text(empresaData.horario_atencion);
+            $("#telefono-empresa").text(empresaData.telefono);
+            $("#email-empresa").text(empresaData.email);
+            $("#direccion-empresa").text(empresaData.direccion);
+          } else {
+            console.error("No se pudo cargar la información de la empresa");
+          }
+        } catch (error) {
+          console.error("Error al cargar empresa:", error);
         }
       }
     </script>
+    <script src="js/db-connection.js"></script>
   </body>
 </html>
