@@ -1,66 +1,56 @@
-// ==========================================
-// REPORTEADOR DE CLIMA - KEVWEB
-// API: OpenWeatherMap
-// ==========================================
+/**
+ * clima.js
+ * Reporteador de Clima mediante API con OpenWeatherMap.Org
+ * KevWeb - 2026
+ */
 
 // CONFIGURACIÓN DE LA API
-// ⚠️ IMPORTANTE: Reemplaza 'TU_API_KEY_AQUI' con tu API Key de OpenWeatherMap
-const API_KEY = 'TU_API_KEY_AQUI';
-const API_BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
-const ICON_BASE_URL = 'https://openweathermap.org/img/wn/';
 
-// ==========================================
+const API_KEY = "7c717fa20a86a394c32c2389c5420b49";
+const API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+const ICON_BASE_URL = "https://openweathermap.org/img/wn/";
+
 // ELEMENTOS DEL DOM
-// ==========================================
+
 const elementos = {
   // Inputs y botones
-  ciudadInput: document.getElementById('ciudadInput'),
-  btnBuscarClima: document.getElementById('btnBuscarClima'),
-  
+  ciudadInput: document.getElementById("ciudadInput"),
+  btnBuscarClima: document.getElementById("btnBuscarClima"),
+
   // Estados de carga y error
-  loading: document.getElementById('loading'),
-  errorMsg: document.getElementById('errorMsg'),
-  errorText: document.getElementById('errorText'),
-  
+  loading: document.getElementById("loading"),
+  errorMsg: document.getElementById("errorMsg"),
+  errorText: document.getElementById("errorText"),
+
   // Tarjeta de clima
-  climaCard: document.getElementById('climaCard'),
-  
+  climaCard: document.getElementById("climaCard"),
+
   // Datos de ubicación
-  ciudadNombre: document.getElementById('ciudadNombre'),
-  paisNombre: document.getElementById('paisNombre'),
-  fechaActual: document.getElementById('fechaActual'),
-  
+  ciudadNombre: document.getElementById("ciudadNombre"),
+  paisNombre: document.getElementById("paisNombre"),
+  fechaActual: document.getElementById("fechaActual"),
+
   // Temperatura y clima
-  temperatura: document.getElementById('temperatura'),
-  climaIcono: document.getElementById('climaIcono'),
-  descripcionClima: document.getElementById('descripcionClima'),
-  
-  // Detalles
-  humedad: document.getElementById('humedad'),
-  viento: document.getElementById('viento'),
-  sensacion: document.getElementById('sensacion'),
-  presion: document.getElementById('presion'),
-  
-  // Información adicional
-  tempMin: document.getElementById('tempMin'),
-  tempMax: document.getElementById('tempMax'),
-  visibilidad: document.getElementById('visibilidad'),
-  nubosidad: document.getElementById('nubosidad'),
+  temperatura: document.getElementById("temperatura"),
+  climaIcono: document.getElementById("climaIcono"),
+  descripcionClima: document.getElementById("descripcionClima"),
+
+  // Detalles: Humedad y Viento
+  humedad: document.getElementById("humedad"),
+  viento: document.getElementById("viento"),
 };
 
-// ==========================================
 // FUNCIONES PRINCIPALES
-// ==========================================
 
 /**
  * Obtener datos del clima desde la API
- * @param {string} ciudad - Nombre de la ciudad
+ * @param {string} ciudad
  */
 async function obtenerClima(ciudad) {
   try {
     // Validar API Key
-    if (API_KEY === 'TU_API_KEY_AQUI') {
-      mostrarError('⚠️ Error de Configuración: Por favor, configura tu API Key de OpenWeatherMap en el archivo clima.js');
+    if (API_KEY === "API_KEY") {
+      mostrarError("Error de Configuración");
       return;
     }
 
@@ -76,11 +66,13 @@ async function obtenerClima(ciudad) {
     // Verificar respuesta
     if (!response.ok) {
       if (response.status === 404) {
-        throw new Error('Ciudad no encontrada. Verifica el nombre e intenta nuevamente.');
+        throw new Error("Ciudad no encontrada.");
       } else if (response.status === 401) {
-        throw new Error('API Key inválida. Verifica tu configuración.');
+        throw new Error("API Key inválida.");
       } else {
-        throw new Error('Error al obtener datos del clima. Intenta nuevamente.');
+        throw new Error(
+          "Error al obtener datos del clima. Intenta nuevamente.",
+        );
       }
     }
 
@@ -89,9 +81,8 @@ async function obtenerClima(ciudad) {
 
     // Mostrar datos en la interfaz
     mostrarDatosClima(data);
-
   } catch (error) {
-    console.error('Error al obtener clima:', error);
+    console.error("Error al obtener clima:", error);
     mostrarError(error.message);
   }
 }
@@ -109,11 +100,9 @@ function mostrarDatosClima(data) {
   const {
     name,
     sys: { country },
-    main: { temp, feels_like, temp_min, temp_max, humidity, pressure },
+    main: { temp, humidity },
     weather,
     wind: { speed, deg },
-    visibility,
-    clouds: { all: cloudiness },
   } = data;
 
   // Formatear fecha actual
@@ -133,25 +122,19 @@ function mostrarDatosClima(data) {
   elementos.climaIcono.alt = climaInfo.description;
   elementos.descripcionClima.textContent = climaInfo.description;
 
-  // Detalles del clima
+  // Humedad
   elementos.humedad.textContent = `${humidity}%`;
-  elementos.viento.textContent = `${speed} m/s ${obtenerDireccionViento(deg)}`;
-  elementos.sensacion.textContent = `${Math.round(feels_like)}°C`;
-  elementos.presion.textContent = `${pressure} hPa`;
 
-  // Información adicional
-  elementos.tempMin.textContent = `${Math.round(temp_min)}°C`;
-  elementos.tempMax.textContent = `${Math.round(temp_max)}°C`;
-  elementos.visibilidad.textContent = `${(visibility / 1000).toFixed(1)} km`;
-  elementos.nubosidad.textContent = `${cloudiness}%`;
+  // Viento
+  elementos.viento.textContent = `${speed} m/s ${obtenerDireccionViento(deg)}`;
 
   // Mostrar tarjeta de clima
-  elementos.climaCard.style.display = 'block';
+  elementos.climaCard.style.display = "block";
 
   // Animación de entrada
-  elementos.climaCard.style.animation = 'none';
+  elementos.climaCard.style.animation = "none";
   setTimeout(() => {
-    elementos.climaCard.style.animation = 'fadeIn 0.5s ease';
+    elementos.climaCard.style.animation = "fadeIn 0.5s ease";
   }, 10);
 }
 
@@ -159,75 +142,80 @@ function mostrarDatosClima(data) {
  * Mostrar estado de carga
  */
 function mostrarLoading() {
-  elementos.loading.style.display = 'block';
-  elementos.errorMsg.style.display = 'none';
-  elementos.climaCard.style.display = 'none';
+  elementos.loading.style.display = "block";
+  elementos.errorMsg.style.display = "none";
+  elementos.climaCard.style.display = "none";
 }
 
 /**
  * Ocultar estado de carga
  */
 function ocultarLoading() {
-  elementos.loading.style.display = 'none';
+  elementos.loading.style.display = "none";
 }
 
 /**
  * Mostrar mensaje de error
- * @param {string} mensaje - Mensaje de error
+ * @param {string} mensaje
  */
 function mostrarError(mensaje) {
   ocultarLoading();
   elementos.errorText.textContent = mensaje;
-  elementos.errorMsg.style.display = 'flex';
-  elementos.climaCard.style.display = 'none';
+  elementos.errorMsg.style.display = "flex";
+  elementos.climaCard.style.display = "none";
 }
 
 /**
  * Ocultar mensaje de error
  */
 function ocultarError() {
-  elementos.errorMsg.style.display = 'none';
+  elementos.errorMsg.style.display = "none";
 }
 
-// ==========================================
 // FUNCIONES AUXILIARES
-// ==========================================
 
 /**
  * Formatear fecha actual
- * @returns {string} Fecha formateada
+ * @returns {string}
  */
 function formatearFecha() {
   const opciones = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   };
 
-  return new Date().toLocaleDateString('es-ES', opciones);
+  return new Date().toLocaleDateString("es-ES", opciones);
 }
 
 /**
  * Obtener nombre completo del país
- * @param {string} codigo - Código del país (ISO 3166-1 alpha-2)
- * @returns {string} Nombre del país
+ * @param {string} codigo
+ * @returns {string}
  */
 function obtenerNombrePais(codigo) {
   const paises = {
-    EC: 'Ecuador',
-    ES: 'España',
-    US: 'Estados Unidos',
-    MX: 'México',
-    CO: 'Colombia',
-    PE: 'Perú',
-    AR: 'Argentina',
-    CL: 'Chile',
-    BR: 'Brasil',
-    VE: 'Venezuela',
-    // Agregar más países según necesidad
+    EC: "Ecuador",
+    ES: "España",
+    US: "Estados Unidos",
+    MX: "México",
+    CO: "Colombia",
+    PE: "Perú",
+    AR: "Argentina",
+    CL: "Chile",
+    BR: "Brasil",
+    VE: "Venezuela",
+    JP: "Japón",
+    CN: "China",
+    FR: "Francia",
+    DE: "Alemania",
+    IT: "Italia",
+    GB: "Reino Unido",
+    CA: "Canadá",
+    AU: "Australia",
   };
 
   return paises[codigo] || codigo;
@@ -235,41 +223,39 @@ function obtenerNombrePais(codigo) {
 
 /**
  * Obtener dirección del viento
- * @param {number} grados - Grados de dirección (0-360)
- * @returns {string} Dirección del viento
+ * @param {number} grados
+ * @returns {string}
  */
 function obtenerDireccionViento(grados) {
-  const direcciones = ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'];
+  const direcciones = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"];
   const indice = Math.round(grados / 45) % 8;
   return direcciones[indice];
 }
 
 /**
  * Validar entrada de ciudad
- * @returns {boolean} True si es válida
+ * @returns {boolean}
  */
 function validarCiudad() {
   const ciudad = elementos.ciudadInput.value.trim();
 
   if (!ciudad) {
-    mostrarError('Por favor, ingresa el nombre de una ciudad');
+    mostrarError("Por favor, ingresa el nombre de una ciudad");
     return false;
   }
 
   if (ciudad.length < 2) {
-    mostrarError('El nombre de la ciudad debe tener al menos 2 caracteres');
+    mostrarError("El nombre de la ciudad debe tener al menos 2 caracteres");
     return false;
   }
 
   return true;
 }
 
-// ==========================================
 // EVENT LISTENERS
-// ==========================================
 
 // Buscar clima al hacer clic en el botón
-elementos.btnBuscarClima.addEventListener('click', () => {
+elementos.btnBuscarClima.addEventListener("click", () => {
   if (validarCiudad()) {
     const ciudad = elementos.ciudadInput.value.trim();
     obtenerClima(ciudad);
@@ -277,50 +263,18 @@ elementos.btnBuscarClima.addEventListener('click', () => {
 });
 
 // Buscar clima al presionar Enter en el input
-elementos.ciudadInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && validarCiudad()) {
+elementos.ciudadInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && validarCiudad()) {
     const ciudad = elementos.ciudadInput.value.trim();
     obtenerClima(ciudad);
   }
 });
 
 // Botones de sugerencias
-document.querySelectorAll('.btn-sugerencia').forEach(boton => {
-  boton.addEventListener('click', () => {
-    const ciudad = boton.getAttribute('data-ciudad');
+document.querySelectorAll(".btn-sugerencia").forEach((boton) => {
+  boton.addEventListener("click", () => {
+    const ciudad = boton.getAttribute("data-ciudad");
     elementos.ciudadInput.value = ciudad;
     obtenerClima(ciudad);
   });
 });
-
-// ==========================================
-// CARGAR CLIMA POR DEFECTO (OPCIONAL)
-// ==========================================
-
-// Descomentar para cargar clima de una ciudad por defecto al cargar la página
-/*
-window.addEventListener('DOMContentLoaded', () => {
-  elementos.ciudadInput.value = 'Quito,EC';
-  obtenerClima('Quito,EC');
-});
-*/
-
-// ==========================================
-// CONSOLA DE INFORMACIÓN
-// ==========================================
-console.log(`
-╔════════════════════════════════════════════╗
-║   REPORTEADOR DE CLIMA - KEVWEB           ║
-║   Powered by OpenWeatherMap API           ║
-╚════════════════════════════════════════════╝
-
-⚠️ IMPORTANTE: Configura tu API Key en la línea 8 del archivo clima.js
-
-📚 Instrucciones:
-1. Registrarse en https://openweathermap.org/
-2. Crear un API Key gratuito
-3. Reemplazar 'TU_API_KEY_AQUI' con tu API Key
-4. Guardar y recargar la página
-
-© 2026 Kevin López - KevWeb
-`);

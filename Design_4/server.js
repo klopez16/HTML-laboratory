@@ -5,19 +5,33 @@ const { Pool } = require("pg");
 const app = express();
 const PORT = 3000;
 
+require("dotenv").config();
+
+const express = require("express");
+const cors = require("cors");
+const { Pool } = require("pg");
+const axios = require("axios");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
-app.use(express.static(".")); // Servir archivos estáticos (HTML, CSS, JS, imágenes)
+app.use(express.static("."));
 
-// Configuración de PostgreSQL
+// Configuración de PostgreSQL usando .env
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "kevweb_db",
-  password: "liverpool",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
+
+// Configuración de OpenWeatherMap usando .env
+const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
+const OPENWEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 // Probar conexión
 pool.connect((err, client, release) => {
@@ -28,18 +42,15 @@ pool.connect((err, client, release) => {
   release();
 });
 
-// ==========================================
 // RUTAS DE LA API
-// ==========================================
 
 // Ruta de prueba
 app.get("/", (req, res) => {
   res.send("🚀 Servidor KevWeb activo - API funcionando correctamente");
 });
 
-// ==========================================
 // EMPRESA INFO
-// ==========================================
+
 app.get("/api/empresa", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM empresa_info LIMIT 1");
@@ -50,9 +61,8 @@ app.get("/api/empresa", async (req, res) => {
   }
 });
 
-// ==========================================
 // CATEGORÍAS
-// ==========================================
+
 app.get("/api/categorias", async (req, res) => {
   try {
     const result = await pool.query(
@@ -65,9 +75,7 @@ app.get("/api/categorias", async (req, res) => {
   }
 });
 
-// ==========================================
 // SERVICIOS
-// ==========================================
 
 // Obtener todos los servicios
 app.get("/api/servicios", async (req, res) => {
@@ -124,9 +132,8 @@ app.get("/api/servicios/ofertas/activas", async (req, res) => {
   }
 });
 
-// ==========================================
 // PORTAFOLIO
-// ==========================================
+
 app.get("/api/portafolio", async (req, res) => {
   try {
     const result = await pool.query(
@@ -139,9 +146,8 @@ app.get("/api/portafolio", async (req, res) => {
   }
 });
 
-// ==========================================
 // NOTICIAS
-// ==========================================
+
 app.get("/api/noticias", async (req, res) => {
   try {
     const result = await pool.query(
@@ -154,9 +160,8 @@ app.get("/api/noticias", async (req, res) => {
   }
 });
 
-// ==========================================
 // CONTACTO (CREATE)
-// ==========================================
+
 app.post("/api/contacto", async (req, res) => {
   try {
     const { nombre, email, telefono, tipo_servicio_interes, mensaje } =
@@ -197,9 +202,8 @@ app.get("/api/contacto", async (req, res) => {
   }
 });
 
-// ==========================================
 // INICIAR SERVIDOR
-// ==========================================
+
 app.listen(PORT, () => {
   console.log(`
   Servidor KevWeb iniciado

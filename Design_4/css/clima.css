@@ -1,68 +1,79 @@
-/* ==========================================
-   ESTILOS PARA EL REPORTEADOR DE CLIMA
-   ========================================== */
-
 .clima-main {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 2rem 1rem;
 }
 
 .clima-title {
   text-align: center;
   font-size: 2.5rem;
-  color: #2c3e50;
-  margin-bottom: 30px;
+  color: var(--green-dark);
+  margin-bottom: 2rem;
   font-weight: 700;
+  position: relative;
 }
 
-/* ==========================================
-   BUSCADOR DE CIUDAD
-   ========================================== */
+.clima-title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: var(--gold);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/*BUSCADOR DE CIUDAD*/
 .clima-search {
   display: flex;
   gap: 15px;
   margin-bottom: 30px;
   flex-wrap: wrap;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ciudad-input {
   flex: 1;
   min-width: 250px;
-  padding: 15px 20px;
+  padding: 0.7rem 1rem;
   font-size: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
+  border: 2px solid var(--green-vintage);
+  border-radius: 6px;
   outline: none;
   transition: all 0.3s ease;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  background: #fff;
+  color: var(--text-dark);
 }
 
 .ciudad-input:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  border-color: var(--green-dark);
 }
 
 .btn-clima {
-  padding: 15px 30px;
+  padding: 0.7rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
-  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #fff;
+  background: linear-gradient(
+    to bottom,
+    var(--green-vintage),
+    var(--green-dark)
+  );
   border: none;
-  border-radius: 10px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .btn-clima:hover {
-  background: linear-gradient(135deg, #2980b9, #21618c);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
 
 .btn-clima:active {
@@ -73,17 +84,15 @@
   font-size: 1.2rem;
 }
 
-/* ==========================================
-   INDICADOR DE CARGA
-   ========================================== */
+/*INDICADOR DE CARGA*/
 .loading {
   text-align: center;
   padding: 40px;
 }
 
 .spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border: 4px solid var(--cream);
+  border-top: 4px solid var(--green-vintage);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -92,27 +101,32 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading p {
-  color: #7f8c8d;
+  color: var(--text-dark);
   font-size: 1rem;
 }
 
-/* ==========================================
-   MENSAJE DE ERROR
-   ========================================== */
+/*MENSAJE DE ERROR*/
 .error-msg {
-  background: #fee;
-  border: 2px solid #e74c3c;
-  border-radius: 10px;
+  background: #fff;
+  border: 2px solid var(--red-vintage);
+  border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 15px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .error-icon {
@@ -120,20 +134,18 @@
 }
 
 .error-msg p {
-  color: #c0392b;
+  color: var(--red-dark);
   margin: 0;
   font-weight: 500;
 }
 
-/* ==========================================
-   TARJETA DEL CLIMA
-   ========================================== */
+/*TARJETA DEL CLIMA*/
 .clima-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20px;
+  background: #fff;
+  border-radius: 12px;
   padding: 30px;
-  color: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: var(--text-dark);
+  border: 2px solid var(--green-vintage);
   margin-bottom: 30px;
   animation: fadeIn 0.5s ease;
 }
@@ -154,25 +166,25 @@
   text-align: center;
   margin-bottom: 25px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid var(--cream);
 }
 
 .ciudad-nombre {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0 0 5px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--green-dark);
 }
 
 .pais-nombre {
   font-size: 1.2rem;
-  opacity: 0.9;
+  color: var(--text-dark);
   margin: 5px 0;
 }
 
 .fecha-actual {
   font-size: 0.95rem;
-  opacity: 0.8;
+  color: #666;
   margin: 5px 0 0 0;
 }
 
@@ -183,6 +195,9 @@
   align-items: center;
   gap: 30px;
   margin: 30px 0;
+  padding: 30px;
+  background: var(--cream);
+  border-radius: 12px;
 }
 
 .temp-principal {
@@ -194,19 +209,19 @@
   font-size: 5rem;
   font-weight: 700;
   line-height: 1;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  color: var(--green-dark);
 }
 
 .temp-simbolo {
   font-size: 2.5rem;
   font-weight: 300;
   margin-left: 5px;
+  color: var(--green-dark);
 }
 
 .clima-icono img {
   width: 120px;
   height: 120px;
-  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.3));
 }
 
 /* Descripción del clima */
@@ -220,128 +235,60 @@
   font-weight: 500;
   text-transform: capitalize;
   margin: 0;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  color: var(--text-dark);
 }
 
-/* Detalles del clima */
+/* Detalles del clima: Humedad y Viento */
 .clima-detalles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  margin: 30px 0;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 2px solid var(--cream);
 }
 
-.detalle-item {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 20px;
+.detalle-card {
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 25px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
+  border: 2px solid transparent;
   transition: all 0.3s ease;
 }
 
-.detalle-item:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-5px);
+.detalle-card:hover {
+  border-color: var(--green-vintage);
+  transform: translateY(-3px);
 }
 
-.detalle-icono {
-  font-size: 2rem;
+.detalle-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
 }
 
 .detalle-info {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
+  flex: 1;
 }
 
 .detalle-label {
-  font-size: 0.85rem;
-  opacity: 0.9;
+  font-size: 0.9rem;
+  color: #666;
   font-weight: 500;
 }
 
 .detalle-valor {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 700;
+  color: var(--green-dark);
 }
 
-/* Información adicional */
-.clima-adicional {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 25px;
-  padding-top: 25px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.adicional-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-.adicional-label {
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.adicional-valor {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-/* ==========================================
-   SUGERENCIAS DE CIUDADES
-   ========================================== */
-.ciudades-sugerencias {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.sugerencias-title {
-  font-size: 1.1rem;
-  color: #7f8c8d;
-  margin-bottom: 15px;
-  font-weight: 500;
-}
-
-.sugerencias-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.btn-sugerencia {
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #3498db;
-  background: white;
-  border: 2px solid #3498db;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Roboto', sans-serif;
-}
-
-.btn-sugerencia:hover {
-  background: #3498db;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-}
-
-/* ==========================================
-   RESPONSIVE DESIGN
-   ========================================== */
+/*RESPONSIVE DESIGN*/
 @media (max-width: 768px) {
   .clima-title {
     font-size: 2rem;
@@ -374,11 +321,23 @@
   }
 
   .clima-detalles {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .clima-adicional {
-    grid-template-columns: 1fr;
+  .clima-temperatura {
+    padding: 20px;
+  }
+
+  .detalle-card {
+    padding: 20px;
+  }
+
+  .detalle-icon {
+    font-size: 2.5rem;
+  }
+
+  .detalle-valor {
+    font-size: 1.5rem;
   }
 }
 
@@ -396,16 +355,24 @@
     gap: 20px;
   }
 
-  .clima-detalles {
-    grid-template-columns: 1fr;
+  .detalle-card {
+    padding: 18px;
   }
 
-  .detalle-item {
-    padding: 15px;
+  .detalle-icon {
+    font-size: 2rem;
+  }
+
+  .detalle-valor {
+    font-size: 1.3rem;
   }
 
   .btn-sugerencia {
     padding: 8px 15px;
     font-size: 0.85rem;
+  }
+
+  .ciudades-sugerencias {
+    padding: 20px;
   }
 }

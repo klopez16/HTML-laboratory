@@ -37,7 +37,7 @@
             <li><a href="location.html">Localización</a></li>
             <li><a href="contact.html">Contacto</a></li>
             <li><a href="news.html">Noticias</a></li>
-            <li><a href="clima.html" class="active">Clima</a></li>
+            <li><a href="weather.html" class="active">Clima</a></li>
           </ul>
         </nav>
       </div>
@@ -47,7 +47,6 @@
       <main class="main clima-main">
         <h2 class="clima-title">Reporteador de Clima</h2>
 
-        <!-- Buscador de Ciudad -->
         <div class="clima-search">
           <input
             type="text"
@@ -55,26 +54,21 @@
             placeholder="Ingresa el nombre de la ciudad (ej: Quito, Ecuador)"
             class="ciudad-input"
           />
-          <button id="btnBuscarClima" class="btn-clima">
-            <span class="btn-icon">🔍</span> Buscar Clima
-          </button>
+          <button id="btnBuscarClima" class="btn-clima">Buscar Clima</button>
         </div>
 
         <!-- Indicador de carga -->
         <div id="loading" class="loading" style="display: none">
           <div class="spinner"></div>
-          <p>Cargando datos del clima...</p>
+          <p>Cargando Datos.</p>
         </div>
 
-        <!-- Mensaje de error -->
         <div id="errorMsg" class="error-msg" style="display: none">
-          <span class="error-icon">⚠️</span>
           <p id="errorText"></p>
         </div>
 
         <!-- Tarjeta del Clima -->
         <div id="climaCard" class="clima-card" style="display: none">
-          <!-- Cabecera con ubicación -->
           <div class="clima-header">
             <h3 class="ciudad-nombre" id="ciudadNombre"></h3>
             <p class="pais-nombre" id="paisNombre"></p>
@@ -92,85 +86,24 @@
             </div>
           </div>
 
-          <!-- Descripción del clima -->
           <div class="clima-descripcion">
             <p id="descripcionClima"></p>
           </div>
 
-          <!-- Detalles del clima -->
           <div class="clima-detalles">
-            <div class="detalle-item">
-              <div class="detalle-icono">💧</div>
+            <div class="detalle-card">
               <div class="detalle-info">
                 <span class="detalle-label">Humedad</span>
                 <span class="detalle-valor" id="humedad"></span>
               </div>
             </div>
 
-            <div class="detalle-item">
-              <div class="detalle-icono">💨</div>
+            <div class="detalle-card">
               <div class="detalle-info">
                 <span class="detalle-label">Viento</span>
                 <span class="detalle-valor" id="viento"></span>
               </div>
             </div>
-
-            <div class="detalle-item">
-              <div class="detalle-icono">🌡️</div>
-              <div class="detalle-info">
-                <span class="detalle-label">Sensación Térmica</span>
-                <span class="detalle-valor" id="sensacion"></span>
-              </div>
-            </div>
-
-            <div class="detalle-item">
-              <div class="detalle-icono">📊</div>
-              <div class="detalle-info">
-                <span class="detalle-label">Presión</span>
-                <span class="detalle-valor" id="presion"></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Información adicional -->
-          <div class="clima-adicional">
-            <div class="adicional-item">
-              <span class="adicional-label">Temp. Mínima:</span>
-              <span class="adicional-valor" id="tempMin"></span>
-            </div>
-            <div class="adicional-item">
-              <span class="adicional-label">Temp. Máxima:</span>
-              <span class="adicional-valor" id="tempMax"></span>
-            </div>
-            <div class="adicional-item">
-              <span class="adicional-label">Visibilidad:</span>
-              <span class="adicional-valor" id="visibilidad"></span>
-            </div>
-            <div class="adicional-item">
-              <span class="adicional-label">Nubosidad:</span>
-              <span class="adicional-valor" id="nubosidad"></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sugerencias de ciudades populares -->
-        <div class="ciudades-sugerencias">
-          <p class="sugerencias-title">Ciudades populares:</p>
-          <div class="sugerencias-buttons">
-            <button class="btn-sugerencia" data-ciudad="Quito,EC">Quito</button>
-            <button class="btn-sugerencia" data-ciudad="Guayaquil,EC">
-              Guayaquil
-            </button>
-            <button class="btn-sugerencia" data-ciudad="Cuenca,EC">
-              Cuenca
-            </button>
-            <button class="btn-sugerencia" data-ciudad="Madrid,ES">
-              Madrid
-            </button>
-            <button class="btn-sugerencia" data-ciudad="New York,US">
-              New York
-            </button>
-            <button class="btn-sugerencia" data-ciudad="Tokyo,JP">Tokyo</button>
           </div>
         </div>
       </main>

@@ -1,0 +1,67 @@
+# Gitignore - Kevweb
+
+# Variables de entorno (API KEYS)
+.env
+.env.local
+.env.development
+.env.production
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencias
+package-lock.json
+yarn.lock
+
+# Archivos de configuración local
+config.local.js
+config.development.js
+
+# Credenciales de base de datos
+db-credentials.json
+database.config.js
+
+# Logs
+logs/
+*.log
+
+# Sistemas operativos
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs y Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+# Backups
+*.bak
+*.backup
+*~
+
+# Archivos de test
+coverage/
+.nyc_output/
+
+# Build
+dist/
+build/
+
+# Archivos específicos del proyecto
+server.local.js
+api-keys.txt
+credentials.txt
